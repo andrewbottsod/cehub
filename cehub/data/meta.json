@@ -1,0 +1,28 @@
+{
+ "changes": [
+  {
+   "date": "2026-10-16",
+   "text": "Hub launched with 111 listings (58 with 2027 dates, 53 awaiting dates) and CE rules for all 50 states + DC."
+  },
+  {
+   "date": "2026-10-16",
+   "text": "Added 20 specialty-eyecare and ophthalmology/surgical meetings (new gold \"Ophthalmology & surgical\" category: AAO, ASCRS, ARVO, ASRS, AAPOS, NANOS, AGS, Hawaiian Eye, Glaucoma 360 and more; specialty: OVDRA/COVD, IMC myopia, Envision low vision, ISLRR). Added topic tags and a Topic filter."
+  },
+  {
+   "date": "2026-10-16",
+   "text": "Added 46 listings in six new categories: school-of-optometry CE (ICO, KYCO, Pacific, OSU, Berkeley, UMSL, UAB), hands-on laser & surgical procedure courses (KYCO ETP, NSUOCO, Indiana, Kansas, Academy), online CE programs (Woo U, ODs on Finance, CEwire, SECO University, AOA EyeLearn and more), local & referral-center CE in Virginia and Kentucky, buying-group meetings (PECAA, IDOC), staff/tech/optician CE (SECO, AOA paraoptometric, OptiCon, JCAHPO) and mission/volunteer programs (RAM, VOSH). New Format filter and a Year-round section."
+  },
+  {
+   "date": "2026-10-16",
+   "text": "New Mission trips tab: 83 domestic and international eye care mission opportunities (free clinics, Special Olympics Opening Eyes, RAM, Health Wagon M7, VOSH and all 29 US VOSH chapters, CMDA Global Health Outreach, Mercy Ships, Samaritan's Purse, Orbis, Unite For Sight and more), with filters for location, role and faith-based."
+  },
+  {
+   "date": "2026-10-18",
+   "text": "Ophthalmologist support: signup now asks your occupation and license type (OD, MD or DO), then state and renewal date. Added physician CME rules for all 50 states + DC (medical and osteopathic boards), AMA PRA / AOA credit types on transcripts, ABO and AOBOO-HNS continuing-certification tracking, the DEA MATE Act training, a credit-type filter, and 37 more ophthalmology meetings (Retina Society, Macula Society, ASOPRS, Vit-Buckle, Aspen RDS, Caribbean Eye, Wills Eye, state eye-physician societies and more)."
+  }
+ ],
+ "eventCount": 214,
+ "lastUpdated": "2026-10-18",
+ "launchedAt": "2026-10-16",
+ "nextUpdate": "2026-10-23"
+}

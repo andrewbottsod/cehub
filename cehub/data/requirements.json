@@ -1,0 +1,852 @@
+{
+ "disclaimer": "Summaries for TPA-certified licensees. Rules change; confirm with your state board before renewing.",
+ "sources": [
+  "https://odsonfinance.com/cestates/",
+  "https://eyesoneyecare.com/resources/ultimate-guide-to-continuing-education-for-optometrist/",
+  "https://law.lis.virginia.gov/admincode/title18/agency105/chapter20/section70/"
+ ],
+ "states": {
+  "AK": {
+   "carryMax": null,
+   "code": "AK",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Alaska",
+   "notes": "",
+   "period": "Jan 1 – Dec 31 (2-yr)",
+   "pmMax": 3,
+   "selfMax": 10,
+   "therMin": 24,
+   "total": 40
+  },
+  "AL": {
+   "carryMax": null,
+   "code": "AL",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Alabama",
+   "notes": "Non-TPA: 14 hrs. Hours may count for this year or next, not both.",
+   "period": "Oct 1 – Sep 30",
+   "pmMax": 3,
+   "selfMax": 3,
+   "therMin": 10,
+   "total": 20
+  },
+  "AR": {
+   "carryMax": null,
+   "code": "AR",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": 12,
+   "mandatory": [
+    "1 hr jurisprudence"
+   ],
+   "name": "Arkansas",
+   "notes": "Non-TPA: 12 hrs. Live = in-person.",
+   "period": "Feb 1 – Jan 31",
+   "pmMax": 4,
+   "selfMax": 8,
+   "therMin": null,
+   "total": 20
+  },
+  "AZ": {
+   "carryMax": null,
+   "code": "AZ",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "3 hrs opioid-related CE (DEA registrants)"
+   ],
+   "name": "Arizona",
+   "notes": "",
+   "period": "Birthday-based, 2 yrs",
+   "pmMax": 4,
+   "selfMax": 12,
+   "therMin": 8,
+   "total": 32
+  },
+  "CA": {
+   "carryMax": null,
+   "code": "CA",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "10 hrs glaucoma (TLG/TPG certified)"
+   ],
+   "name": "California",
+   "notes": "Non-TPA: 40 hrs. Practice management not accepted.",
+   "period": "License expiration, 2 yrs",
+   "pmMax": 0,
+   "selfMax": 25,
+   "therMin": 35,
+   "total": 50
+  },
+  "CO": {
+   "carryMax": null,
+   "code": "CO",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": 16,
+   "mandatory": [
+    "1 hr substance use prevention"
+   ],
+   "name": "Colorado",
+   "notes": "Up to 4 hrs clinical observation and 4 hrs ICD-10 coding.",
+   "period": "Apr 1 – Mar 31",
+   "pmMax": 0,
+   "selfMax": 8,
+   "therMin": null,
+   "total": 24
+  },
+  "CT": {
+   "carryMax": null,
+   "code": "CT",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Connecticut",
+   "notes": "6 hrs must cover pathology, diabetes or ocular treatment.",
+   "period": "Mar 1 – Feb 28",
+   "pmMax": 6,
+   "selfMax": 6,
+   "therMin": 6,
+   "total": 20
+  },
+  "DC": {
+   "carryMax": null,
+   "code": "DC",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "4 hrs public health, incl. 2 hrs LGBTQ+ cultural competency"
+   ],
+   "name": "District of Columbia",
+   "notes": "32 hrs practice-related. No self-study limit listed.",
+   "period": "Apr 1 – Mar 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": null,
+   "therMin": null,
+   "total": 38
+  },
+  "DE": {
+   "carryMax": null,
+   "code": "DE",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "Current CPR certification"
+   ],
+   "name": "Delaware",
+   "notes": "Non-TPA: 12 hrs.",
+   "period": "Jul 1 – Jun 30",
+   "pmMax": null,
+   "selfMax": 6,
+   "therMin": 20,
+   "total": 30
+  },
+  "FL": {
+   "carryMax": null,
+   "code": "FL",
+   "cycleYears": 2,
+   "inPersonOnly": true,
+   "liveMin": 30,
+   "mandatory": [
+    "2 hrs prevention of medical errors",
+    "2 hrs Florida laws & rules"
+   ],
+   "name": "Florida",
+   "notes": "All CE must be live, in person.",
+   "period": "Mar 1 – Feb 28 (2-yr)",
+   "pmMax": null,
+   "selfMax": 0,
+   "therMin": 6,
+   "total": 30
+  },
+  "GA": {
+   "carryMax": null,
+   "code": "GA",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "1 hr jurisprudence",
+    "Current CPR (not counted toward hours)"
+   ],
+   "name": "Georgia",
+   "notes": "Up to 8 hrs grand rounds.",
+   "period": "Jan 1 – Dec 31 (2-yr)",
+   "pmMax": 10,
+   "selfMax": 10,
+   "therMin": 18,
+   "total": 36
+  },
+  "HI": {
+   "carryMax": null,
+   "code": "HI",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Hawaii",
+   "notes": "Non-TPA: 32 hrs.",
+   "period": "Ends Dec 31 of odd years",
+   "pmMax": null,
+   "selfMax": 9,
+   "therMin": 36,
+   "total": 36
+  },
+  "IA": {
+   "carryMax": null,
+   "code": "IA",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "CPR (2–4 hrs credited)",
+    "Dependent adult/child abuse reporting training (if applicable)"
+   ],
+   "name": "Iowa",
+   "notes": "Max 5 hrs distance + 15 hrs interactive online.",
+   "period": "Jul 1 – Jun 30 (2-yr)",
+   "pmMax": 10,
+   "selfMax": 20,
+   "therMin": 20,
+   "total": 50
+  },
+  "ID": {
+   "carryMax": null,
+   "code": "ID",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Idaho",
+   "notes": "Non-TPA: 12 hrs.",
+   "period": "Jan 1 – Dec 31",
+   "pmMax": null,
+   "selfMax": 9,
+   "therMin": 6,
+   "total": 18
+  },
+  "IL": {
+   "carryMax": null,
+   "code": "IL",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "Sexual harassment prevention",
+    "Implicit bias awareness",
+    "Alzheimer's/dementia (if serving adults 26+)",
+    "Cultural competency",
+    "Safe opioid prescribing (controlled-substance license)"
+   ],
+   "name": "Illinois",
+   "notes": "At least 12 hrs must be tested CE.",
+   "period": "Apr 1 – Mar 31 (2-yr)",
+   "pmMax": 4,
+   "selfMax": 12,
+   "therMin": null,
+   "total": 30
+  },
+  "IN": {
+   "carryMax": null,
+   "code": "IN",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs public health or jurisprudence"
+   ],
+   "name": "Indiana",
+   "notes": "Charting/billing/compliance hours are limited; confirm with the board.",
+   "period": "Apr 1 – Mar 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": 8,
+   "therMin": 20,
+   "total": 40
+  },
+  "KS": {
+   "carryMax": null,
+   "code": "KS",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Kansas",
+   "notes": "24 hrs are due every year; fines if the annual minimum is missed.",
+   "period": "Jun 1 – May 31",
+   "pmMax": 4,
+   "selfMax": 12,
+   "therMin": 5,
+   "total": 48
+  },
+  "KY": {
+   "carryMax": null,
+   "code": "KY",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs KASPER / pain management / addiction (DEA holders)",
+    "5 hrs expanded therapeutic procedures, in person (ETP-certified)"
+   ],
+   "name": "Kentucky",
+   "notes": "Non-TPA: 8 hrs. Some TPA licensees need 15.",
+   "period": "Mar 2 – Mar 1",
+   "pmMax": 2,
+   "selfMax": 5,
+   "therMin": 7,
+   "total": 20
+  },
+  "LA": {
+   "carryMax": null,
+   "code": "LA",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": 8,
+   "mandatory": [],
+   "name": "Louisiana",
+   "notes": "Non-TPA: 12 hrs. Live = classroom.",
+   "period": "Jan 1 – Dec 31",
+   "pmMax": 0,
+   "selfMax": 6,
+   "therMin": 8,
+   "total": 16
+  },
+  "MA": {
+   "carryMax": null,
+   "code": "MA",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "3 hrs glaucoma (GL-certified)"
+   ],
+   "name": "Massachusetts",
+   "notes": "",
+   "period": "Jan 1 – Dec 31",
+   "pmMax": 6,
+   "selfMax": 6,
+   "therMin": null,
+   "total": 18
+  },
+  "MD": {
+   "carryMax": null,
+   "code": "MD",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": 10,
+   "mandatory": [
+    "Current CPR"
+   ],
+   "name": "Maryland",
+   "notes": "Non-certified: 36 hrs. Up to 4 hrs jurisprudence, 3 hrs CPR.",
+   "period": "License expiration, 2 yrs",
+   "pmMax": null,
+   "selfMax": 30,
+   "therMin": 30,
+   "total": 50
+  },
+  "ME": {
+   "carryMax": null,
+   "code": "ME",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Maine",
+   "notes": "Up to 2 hrs CPR.",
+   "period": "Annual",
+   "pmMax": 2,
+   "selfMax": null,
+   "therMin": 15,
+   "total": 25
+  },
+  "MI": {
+   "carryMax": null,
+   "code": "MI",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": 20,
+   "mandatory": [
+    "2 hrs pain & symptom management"
+   ],
+   "name": "Michigan",
+   "notes": "Michigan also has state-wide training mandates (e.g., implicit bias); confirm with LARA.",
+   "period": "License cycle, 2 yrs",
+   "pmMax": 9,
+   "selfMax": 20,
+   "therMin": 20,
+   "total": 40
+  },
+  "MN": {
+   "carryMax": null,
+   "code": "MN",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Minnesota",
+   "notes": "",
+   "period": "Jan 1 – Dec 31 (2-yr)",
+   "pmMax": 6,
+   "selfMax": 15,
+   "therMin": null,
+   "total": 40
+  },
+  "MO": {
+   "carryMax": 16,
+   "code": "MO",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs ethics / jurisprudence"
+   ],
+   "name": "Missouri",
+   "notes": "",
+   "period": "Nov 1 – Oct 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": 16,
+   "therMin": null,
+   "total": 32
+  },
+  "MS": {
+   "carryMax": null,
+   "code": "MS",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs narcotics prescribing / diversion",
+    "CPR (2 hrs across 2 years)"
+   ],
+   "name": "Mississippi",
+   "notes": "14 of 20 hrs must be COPE accredited.",
+   "period": "Jan 1 – Dec 31",
+   "pmMax": 4,
+   "selfMax": 12,
+   "therMin": 10,
+   "total": 20
+  },
+  "MT": {
+   "carryMax": null,
+   "code": "MT",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Montana",
+   "notes": "",
+   "period": "Jul 2 – Jul 1 (2-yr)",
+   "pmMax": null,
+   "selfMax": 12,
+   "therMin": null,
+   "total": 36
+  },
+  "NC": {
+   "carryMax": null,
+   "code": "NC",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "North Carolina",
+   "notes": "15 hrs must be 'certified' (pharmacology, diagnosis/therapeutics, advanced procedures).",
+   "period": "Jan 1 – Dec 31",
+   "pmMax": null,
+   "selfMax": 6,
+   "therMin": 15,
+   "total": 25
+  },
+  "ND": {
+   "carryMax": null,
+   "code": "ND",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "North Dakota",
+   "notes": "",
+   "period": "Jan 1 – Dec 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": 16,
+   "therMin": 20,
+   "total": 40
+  },
+  "NE": {
+   "carryMax": null,
+   "code": "NE",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Nebraska",
+   "notes": "",
+   "period": "Aug 1 – Jul 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": 8,
+   "therMin": null,
+   "total": 44
+  },
+  "NH": {
+   "carryMax": null,
+   "code": "NH",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "10 hrs glaucoma (TPA)"
+   ],
+   "name": "New Hampshire",
+   "notes": "Non-TPA: 15 hrs. Published guides disagree on the cycle length.",
+   "period": "Confirm cycle with the board",
+   "pmMax": null,
+   "selfMax": 8,
+   "therMin": 20,
+   "total": 50
+  },
+  "NJ": {
+   "carryMax": null,
+   "code": "NJ",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "New Jersey",
+   "notes": "Of the 30 therapeutic hrs: 20 topical, 10 oral.",
+   "period": "May 1 – Apr 30 (2-yr)",
+   "pmMax": null,
+   "selfMax": 20,
+   "therMin": 30,
+   "total": 50
+  },
+  "NM": {
+   "carryMax": null,
+   "code": "NM",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "1 hr pain management"
+   ],
+   "name": "New Mexico",
+   "notes": "",
+   "period": "Jul 1 – Jun 30",
+   "pmMax": null,
+   "selfMax": 6,
+   "therMin": 10,
+   "total": 22
+  },
+  "NV": {
+   "carryMax": null,
+   "code": "NV",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs opioids / addiction (controlled-substance registrants)"
+   ],
+   "name": "Nevada",
+   "notes": "Non-TPA: 40 hrs.",
+   "period": "Mar 1 – Feb 28 (2-yr)",
+   "pmMax": null,
+   "selfMax": null,
+   "therMin": 30,
+   "total": 50
+  },
+  "NY": {
+   "carryMax": null,
+   "code": "NY",
+   "cycleYears": 3,
+   "inPersonOnly": false,
+   "liveMin": 27,
+   "mandatory": [],
+   "name": "New York",
+   "notes": "Oral-agent certification adds 18 hrs in systemic disease/therapeutics.",
+   "period": "3-yr registration period",
+   "pmMax": null,
+   "selfMax": 9,
+   "therMin": 36,
+   "total": 36
+  },
+  "OH": {
+   "carryMax": null,
+   "code": "OH",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Ohio",
+   "notes": "",
+   "period": "License cycle, 2 yrs",
+   "pmMax": null,
+   "selfMax": 30,
+   "therMin": 20,
+   "total": 50
+  },
+  "OK": {
+   "carryMax": null,
+   "code": "OK",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": 10,
+   "mandatory": [
+    "1 hr judicious prescribing"
+   ],
+   "name": "Oklahoma",
+   "notes": "",
+   "period": "Jul 1 – Jun 30",
+   "pmMax": null,
+   "selfMax": 6,
+   "therMin": null,
+   "total": 25
+  },
+  "OR": {
+   "carryMax": null,
+   "code": "OR",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": 10,
+   "mandatory": [
+    "1 hr ethics / Oregon law (every other year)"
+   ],
+   "name": "Oregon",
+   "notes": "",
+   "period": "Birth month",
+   "pmMax": null,
+   "selfMax": 6,
+   "therMin": 9,
+   "total": 18
+  },
+  "PA": {
+   "carryMax": null,
+   "code": "PA",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs child abuse recognition & reporting",
+    "2 hrs pain management / opioids (therapeutic licensees)"
+   ],
+   "name": "Pennsylvania",
+   "notes": "Glaucoma-certified: 4 hrs glaucoma.",
+   "period": "Dec 1 – Nov 30 (2-yr)",
+   "pmMax": null,
+   "selfMax": 15,
+   "therMin": 6,
+   "total": 30
+  },
+  "RI": {
+   "carryMax": null,
+   "code": "RI",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Rhode Island",
+   "notes": "Non-TPA: 16 hrs.",
+   "period": "Feb 1 – Jan 31",
+   "pmMax": null,
+   "selfMax": null,
+   "therMin": 10,
+   "total": 20
+  },
+  "SC": {
+   "carryMax": null,
+   "code": "SC",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "South Carolina",
+   "notes": "",
+   "period": "Jan 1 – Dec 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": 10,
+   "therMin": 16,
+   "total": 40
+  },
+  "SD": {
+   "carryMax": null,
+   "code": "SD",
+   "cycleYears": 3,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "South Dakota",
+   "notes": "TPA: 5 hrs per year (no more than 2 self-directed).",
+   "period": "Oct 1 – Sep 30 (3-yr)",
+   "pmMax": null,
+   "selfMax": 15,
+   "therMin": null,
+   "total": 45
+  },
+  "TN": {
+   "carryMax": null,
+   "code": "TN",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs prescribing practices"
+   ],
+   "name": "Tennessee",
+   "notes": "",
+   "period": "Birthday-based, 2 yrs",
+   "pmMax": null,
+   "selfMax": 15,
+   "therMin": 25,
+   "total": 40
+  },
+  "TX": {
+   "carryMax": null,
+   "code": "TX",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs professional responsibility",
+    "2 hrs controlled substances (TG)",
+    "2 hrs opioid prescribing (if prescribing)",
+    "1 hr human trafficking"
+   ],
+   "name": "Texas",
+   "notes": "",
+   "period": "License expiration, 2 yrs",
+   "pmMax": null,
+   "selfMax": 16,
+   "therMin": 24,
+   "total": 32
+  },
+  "UT": {
+   "carryMax": null,
+   "code": "UT",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "4 hrs controlled substance / opioid prescribing (if prescribing)"
+   ],
+   "name": "Utah",
+   "notes": "",
+   "period": "Oct 1 – Sep 30 (2-yr)",
+   "pmMax": null,
+   "selfMax": null,
+   "therMin": null,
+   "total": 30
+  },
+  "VA": {
+   "carryMax": 10,
+   "code": "VA",
+   "cycleYears": 1,
+   "inPersonOnly": false,
+   "liveMin": 10,
+   "mandatory": [],
+   "name": "Virginia",
+   "notes": "Live = real-time interactive (in person or online). Up to 2 hrs CPR and 2 hrs volunteer service. Up to 10 extra hrs carry forward. Keep records 3 years (18VAC105-20-70).",
+   "period": "Apr 1 – Mar 31",
+   "pmMax": 2,
+   "selfMax": null,
+   "therMin": 10,
+   "total": 20
+  },
+  "VT": {
+   "carryMax": null,
+   "code": "VT",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [],
+   "name": "Vermont",
+   "notes": "Non-TPA: 20 hrs.",
+   "period": "Aug 1 – Jul 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": 2,
+   "therMin": 20,
+   "total": 40
+  },
+  "WA": {
+   "carryMax": null,
+   "code": "WA",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": 10,
+   "mandatory": [
+    "2 hrs health equity (every 4 yrs)",
+    "3 hrs suicide prevention (one-time)"
+   ],
+   "name": "Washington",
+   "notes": "",
+   "period": "Birthday; 2-yr CE cycle",
+   "pmMax": null,
+   "selfMax": 25,
+   "therMin": null,
+   "total": 50
+  },
+  "WI": {
+   "carryMax": null,
+   "code": "WI",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "7 hrs glaucoma"
+   ],
+   "name": "Wisconsin",
+   "notes": "",
+   "period": "Dec 15 – Dec 14 (2-yr)",
+   "pmMax": null,
+   "selfMax": null,
+   "therMin": null,
+   "total": 30
+  },
+  "WV": {
+   "carryMax": null,
+   "code": "WV",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "2 hrs injections",
+    "2 hrs drug diversion / prescribing (first renewal)"
+   ],
+   "name": "West Virginia",
+   "notes": "",
+   "period": "Jul 1 – Jun 30 (2-yr)",
+   "pmMax": null,
+   "selfMax": 10,
+   "therMin": 12,
+   "total": 40
+  },
+  "WY": {
+   "carryMax": null,
+   "code": "WY",
+   "cycleYears": 2,
+   "inPersonOnly": false,
+   "liveMin": null,
+   "mandatory": [
+    "3 hrs controlled substances",
+    "1 hr jurisprudence"
+   ],
+   "name": "Wyoming",
+   "notes": "",
+   "period": "Jan 1 – Dec 31 (2-yr)",
+   "pmMax": null,
+   "selfMax": 10,
+   "therMin": 15,
+   "total": 40
+  }
+ },
+ "updatedAt": "2026-10-16"
+}

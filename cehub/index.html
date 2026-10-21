@@ -1,0 +1,1304 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CE Hub 2027 — Optometry CE Calendar &amp; License Tracker</title>
+<meta name="description" content="Every 2027 optometry CE meeting in one calendar — national, state association, specialty and travel CE — with direct registration links, plus a free multi-state license and CE transcript tracker.">
+<meta property="og:title" content="CE Hub 2027 — Optometry CE Calendar">
+<meta property="og:description" content="National, state, specialty and destination optometry CE for 2027 with registration links and license tracking.">
+<meta name="theme-color" content="#2340c2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a working planner — sticky masthead with tabs, filter rail, 12-month grid or list, and a favorites rail on the right that becomes a bottom drawer on phones. */
+:root{
+  --bg:#f3f5f8; --surface:#ffffff; --surface-2:#eef1f6; --ink:#12212d; --muted:#5a6977; --line:#d9e0e8;
+  --accent:#2340c2; --accent-ink:#ffffff; --accent-soft:#e3e8fb;
+  --fluor:#d9f24f; --fluor-ink:#1f2a00;
+  --good:#16794f; --warn:#a15c00; --bad:#b3261e;
+  --c-national:#2340c2; --c-state:#0d7a63; --c-specialty:#7d46c6; --c-travel:#c25414; --c-school:#a1336f; --c-regional:#2f7aa6; --c-canada:#b03535; --c-industry:#66717e; --c-ophthalmology:#9a6a00; --c-procedures:#5b6b00; --c-online:#0e7490; --c-local:#7c4a1e; --c-staff:#be185d; --c-mission:#0f766e;
+  --f-display:"Zilla Slab", Rockwell, "Roboto Slab", Georgia, serif;
+  --f-body:"Libre Franklin", "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0c141b; --surface:#131e28; --surface-2:#1a2733; --ink:#e5ecf2; --muted:#93a3b1; --line:#253542;
+  --accent:#8299ff; --accent-ink:#0c141b; --accent-soft:#1f2b52; --fluor:#cfe84a; --fluor-ink:#1a2200;
+  --good:#5cc895; --warn:#e3a43c; --bad:#ff8a80;
+  --c-national:#8299ff; --c-state:#4fc6a7; --c-specialty:#b691f0; --c-travel:#f0915a; --c-school:#e27ab3; --c-regional:#6db7e0; --c-canada:#f07b7b; --c-industry:#a3adb8; --c-ophthalmology:#e3b54f; --c-procedures:#b8cb4d; --c-online:#4fc3dc; --c-local:#d29b6b; --c-staff:#f472b6; --c-mission:#4fd1b5;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0c141b; --surface:#131e28; --surface-2:#1a2733; --ink:#e5ecf2; --muted:#93a3b1; --line:#253542;
+  --accent:#8299ff; --accent-ink:#0c141b; --accent-soft:#1f2b52; --fluor:#cfe84a; --fluor-ink:#1a2200;
+  --good:#5cc895; --warn:#e3a43c; --bad:#ff8a80;
+  --c-national:#8299ff; --c-state:#4fc6a7; --c-specialty:#b691f0; --c-travel:#f0915a; --c-school:#e27ab3; --c-regional:#6db7e0; --c-canada:#f07b7b; --c-industry:#a3adb8; --c-ophthalmology:#e3b54f; --c-procedures:#b8cb4d; --c-online:#4fc3dc; --c-local:#d29b6b; --c-staff:#f472b6; --c-mission:#4fd1b5;
+  color-scheme:dark }
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+img{max-width:100%}
+.acct{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12.5px}
+.acct .who{color:var(--muted);max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+footer.foot{padding-block:24px 40px;color:var(--muted);font-size:12.5px;display:flex;flex-wrap:wrap;gap:8px 18px;border-top:1px solid var(--line)}
+.signin{display:flex;flex-direction:column;gap:10px}
+.signin .inp{font-size:15px;padding:10px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:14px;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+a{color:var(--accent)}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));max-width:1440px;margin:0 auto}
+
+/* masthead */
+header.mast{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
+.mast-in{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 24px;padding-block:14px 0}
+.brand{display:flex;flex-direction:column;gap:2px;min-width:0}
+.brand h1{font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.05;margin:0;letter-spacing:-.01em}
+.brand h1 span{color:var(--accent)}
+.stamp{margin-left:auto;font-size:12px;color:var(--muted);text-align:right}
+.stamp b{color:var(--ink);font-weight:600}
+nav.tabs{display:flex;gap:4px;width:100%;overflow-x:auto;margin-top:6px}
+nav.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 12px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+/* frame */
+.frame{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;padding-block:20px 80px}
+@media (max-width:980px){.frame{grid-template-columns:minmax(0,1fr)}}
+main{min-width:0;display:flex;flex-direction:column;gap:18px}
+
+/* filters */
+.filters{display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px}
+.frow{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center}
+.search{flex:1 1 240px;min-width:0;border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:8px 10px}
+.filters select,.inp{border:1px solid var(--line);background:var(--bg);border-radius:8px;padding:7px 8px;max-width:100%}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 10px;font-size:12.5px;font-weight:600;cursor:pointer;color:var(--muted)}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--c)}
+.chip[aria-pressed="true"]{color:var(--ink);border-color:var(--c);background:color-mix(in srgb,var(--c) 12%,var(--surface))}
+.chip[aria-pressed="false"] .dot{opacity:.35}
+label.tog{display:inline-flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
+.count{font-size:12.5px;color:var(--muted)}
+
+/* year grid */
+.year{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.month{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;min-width:0}
+.month h3{margin:0;padding:12px 14px 8px;display:flex;align-items:baseline;gap:8px;font-family:var(--f-display);font-size:20px;font-weight:600}
+.month h3 small{font-family:var(--f-mono);font-size:11px;color:var(--muted);font-weight:400;margin-left:auto}
+.mlist{list-style:none;margin:0;padding:0 6px 8px;display:flex;flex-direction:column}
+.erow{display:grid;grid-template-columns:62px minmax(0,1fr) auto;gap:10px;align-items:start;padding:8px;border-radius:8px;cursor:pointer;border-left:3px solid var(--c)}
+.erow:hover{background:var(--surface-2)}
+.erow .d{font-family:var(--f-mono);font-size:12px;line-height:1.3;color:var(--ink)}
+.erow .d small{display:block;color:var(--muted);font-size:10.5px}
+.erow .t{min-width:0}
+.erow .t b{display:block;font-weight:600;font-size:13.5px;line-height:1.3;overflow-wrap:anywhere}
+.erow .t span{display:block;color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+.erow.tba .d{color:var(--muted)}
+.tbahead{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding:8px 8px 2px}
+.mempty{color:var(--muted);font-size:12.5px;padding:4px 14px 14px}
+.star{border:0;background:none;cursor:pointer;font-size:18px;line-height:1;color:var(--muted);padding:2px 4px}
+.star[aria-pressed="true"]{color:#e0a100}
+.badge{display:inline-block;font-family:var(--f-mono);font-size:10px;font-weight:500;letter-spacing:.06em;padding:1px 6px;border-radius:4px;vertical-align:1px;margin-left:4px;text-transform:uppercase}
+.b-new{background:var(--fluor);color:var(--fluor-ink)}
+.b-upd{background:var(--accent-soft);color:var(--accent)}
+.b-sp{background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.b-tba{background:var(--surface-2);color:var(--muted)}
+.sponsored{background:color-mix(in srgb,var(--fluor) 14%,var(--surface))}
+
+/* list cards */
+.cards{display:flex;flex-direction:column;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:var(--radius);padding:14px 16px;display:grid;grid-template-columns:96px minmax(0,1fr) auto;gap:14px}
+@media (max-width:640px){.card{grid-template-columns:minmax(0,1fr) auto}.card .cdate{grid-column:1/-1;display:flex;gap:8px;align-items:baseline}}
+.cdate{font-family:var(--f-mono)}
+.cdate .m{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.cdate .dd{font-size:20px;font-weight:500}
+.cbody{min-width:0;display:flex;flex-direction:column;gap:4px}
+.cbody h4{margin:0;font-family:var(--f-display);font-size:18px;font-weight:600;line-height:1.25;text-wrap:balance}
+.meta{display:flex;flex-wrap:wrap;gap:4px 14px;color:var(--muted);font-size:12.5px}
+.meta b{color:var(--ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:7px 12px;font-weight:600;font-size:13px;text-decoration:none;color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.small{padding:4px 9px;font-size:12px}
+.btn.ghost{border-color:transparent;background:transparent;color:var(--accent)}
+.btn.danger{color:var(--bad)}
+.btn[disabled]{opacity:.5;cursor:default}
+.contact{font-size:12.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 14px}
+.contact .sel{user-select:all;color:var(--ink)}
+.copy{border:0;background:none;color:var(--accent);cursor:pointer;font-size:12px;padding:0 2px}
+.cat{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:var(--c);text-transform:uppercase;letter-spacing:.06em}
+.cat::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.sec-h{font-family:var(--f-display);font-size:22px;margin:6px 0 0;font-weight:600}
+.note{color:var(--muted);font-size:12.5px;margin:0}
+
+/* sidebar */
+aside.favs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 112px);align-self:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);display:flex;flex-direction:column;max-height:calc(100vh - 140px)}
+.favs h2{font-family:var(--f-display);font-size:20px;margin:0;padding:14px 16px 4px;display:flex;align-items:center;gap:8px}
+.favs h2 .close{margin-left:auto;display:none}
+.favsum{padding:0 16px 10px;color:var(--muted);font-size:12.5px;border-bottom:1px solid var(--line)}
+.favsum b{color:var(--ink)}
+.favlist{list-style:none;margin:0;padding:8px;overflow:auto;display:flex;flex-direction:column;gap:2px;flex:1}
+.favlist li{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:8px;padding:8px;border-radius:8px;align-items:start}
+.favlist li:hover{background:var(--surface-2)}
+.favlist .d{font-family:var(--f-mono);font-size:11.5px;line-height:1.3}
+.favlist .t{min-width:0;cursor:pointer}
+.favlist .t b{display:block;font-size:13px;line-height:1.3;font-weight:600;overflow-wrap:anywhere}
+.favlist .t span{font-size:11.5px;color:var(--muted)}
+.favlist .x{border:0;background:none;color:var(--muted);cursor:pointer;font-size:16px;line-height:1}
+.favfoot{padding:10px 16px 14px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px}
+.favlist li.favempty{display:block;padding:12px 8px;color:var(--muted);font-size:13px}
+.fab{display:none}
+@media (max-width:980px){
+  aside.favs{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:70vh;border-radius:14px 14px 0 0;z-index:40;transform:translateY(105%);transition:transform .25s ease;padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+  aside.favs.open{transform:none;box-shadow:0 -10px 30px rgba(0,0,0,.18)}
+  .favs h2 .close{display:inline-flex}
+  .fab{display:inline-flex;position:fixed;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;box-shadow:0 6px 18px rgba(0,0,0,.2)}
+}
+@media (prefers-reduced-motion:reduce){aside.favs{transition:none}}
+
+/* tracker */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.panel h3{margin:0;font-family:var(--f-display);font-size:20px;font-weight:600}
+.formrow{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted);min-width:0}
+.field .inp{min-width:0}
+.lic{border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--bg)}
+.lichead{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline}
+.lichead h4{margin:0;font-family:var(--f-display);font-size:19px;font-weight:600}
+.pill{font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:999px;letter-spacing:.02em}
+.p-good{background:color-mix(in srgb,var(--good) 16%,transparent);color:var(--good)}
+.p-warn{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}
+.p-bad{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}
+.bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.bar{display:flex;flex-direction:column;gap:4px;min-width:0}
+.bar .lbl{display:flex;justify-content:space-between;gap:8px;font-size:12.5px}
+.bar .lbl span:last-child{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.track{height:10px;border-radius:5px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;display:flex}
+.fill{height:100%;background:var(--accent)}
+.fill.plan{background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--accent) 55%,transparent) 0 4px,transparent 4px 7px)}
+.fill.done{background:var(--good)}
+.mand{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;font-size:13px}
+.mand label{display:flex;gap:8px;align-items:flex-start;cursor:pointer}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--surface-2);font-weight:600;white-space:nowrap}
+td.num{font-family:var(--f-mono);text-align:right;white-space:nowrap}
+td select{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:3px 4px;font-size:12px}
+.drop{border:2px dashed var(--line);border-radius:var(--radius);padding:18px;text-align:center;color:var(--muted);display:flex;flex-direction:column;gap:8px;align-items:center}
+.orglink{background:none;border:0;padding:0;font:inherit;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:2px}.orgbar{grid-column:1/-1;display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:8px 12px;border:1px solid var(--line);border-radius:var(--radius);background:var(--accent-soft)}#morg{max-width:280px}
+.wizard .wstep{display:flex;gap:12px;margin:14px 0 4px}.wizard .wstep.off{opacity:.55}.wnum{flex:none;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;font-size:14px}.wstep.off .wnum{background:var(--line);color:var(--muted)}.wbody{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}.wopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}.wopt{text-align:left;border:1px solid var(--line);border-radius:var(--radius);padding:10px 12px;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;gap:3px;color:var(--ink);font:inherit}.wopt:hover{border-color:var(--accent)}.wopt[aria-checked="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}.panel.profile .lichead{align-items:center}.tag{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.copesum{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:4px 0 10px}.copechip{color:var(--ink);font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}.mand li>.note{display:block;padding-left:24px}.mand .note.ok{color:var(--good)}
+.drop.over{border-color:var(--accent);background:var(--accent-soft)}
+.mapgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:8px;font-size:13px;z-index:60;max-width:calc(100% - 32px)}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:var(--radius);padding:28px;text-align:center;color:var(--muted)}
+.empty b{display:block;color:var(--ink);font-family:var(--f-display);font-size:20px;margin-bottom:4px}
+
+/* dialog */
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);padding:0;width:min(640px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+dialog::backdrop{background:rgba(8,14,20,.5)}
+.dlg{padding:20px;display:flex;flex-direction:column;gap:10px}
+.dlg h2{font-family:var(--f-display);margin:0;font-size:24px;line-height:1.2;text-wrap:balance}
+.kv{display:grid;grid-template-columns:120px minmax(0,1fr);gap:6px 12px;font-size:13px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0;overflow-wrap:anywhere}
+.about{max-width:72ch;display:flex;flex-direction:column;gap:10px}
+.about h3{font-family:var(--f-display);font-size:20px;margin:10px 0 0}
+.about p,.about li{color:var(--ink)}
+.log{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:6px}
+.log li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;font-size:13px}
+.suggest{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="wrap mast-in">
+    <div class="brand">
+      <h1>CE Hub <span>2027</span></h1>
+    </div>
+    <div class="stamp" id="stamp">Loading listings…</div>
+    <div class="acct" id="acct"></div>
+    <nav class="tabs" role="tablist" aria-label="Views">
+      <button role="tab" id="tab-tracker" aria-selected="false" data-view="tracker">My licenses &amp; CE</button>
+      <button role="tab" id="tab-list" aria-selected="true" data-view="list">All listings</button>
+      <button role="tab" id="tab-year" aria-selected="false" data-view="year">Calendar</button>
+      <button role="tab" id="tab-missions" aria-selected="false" data-view="missions">Missions</button>
+      <button role="tab" id="tab-about" aria-selected="false" data-view="about">Updates &amp; sources</button>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap frame">
+  <main id="main">
+    <section class="filters" id="filters" aria-label="Filters">
+      <div class="frow">
+        <input class="search" id="q" type="search" placeholder="Search meetings, cities, organizers…" aria-label="Search">
+        <select id="region" aria-label="Location"></select>
+        <select id="focus" aria-label="Topic"></select>
+        <select id="format" aria-label="Format"><option value="">Any format</option><option value="in-person">In person</option><option value="live-online">Live online (counts as live in many states)</option><option value="on-demand">On demand</option></select>
+        <select id="credit" aria-label="Credit type"><option value="">Any credit type</option><option value="cope">COPE (optometrists)</option><option value="ama1">AMA PRA Category 1 (physicians)</option></select>
+        <select id="minHours" aria-label="Minimum CE hours">
+          <option value="0">Any CE hours</option><option value="10">10+ hrs</option><option value="12">12+ hrs</option><option value="16">16+ hrs</option><option value="20">20+ hrs</option>
+        </select>
+        <select id="maxMiles" aria-label="Distance from home">
+          <option value="0">Any distance</option><option value="250">Within 250 mi</option><option value="500">Within 500 mi</option><option value="1000">Within 1,000 mi</option>
+        </select>
+      </div>
+      <div class="frow" id="catChips"></div>
+      <div class="frow">
+        <label class="tog"><input type="checkbox" id="showTba" checked> Include meetings with dates TBA</label>
+        <label class="tog"><input type="checkbox" id="favOnly"> Favorites only</label>
+        <span class="count" id="count"></span>
+      </div>
+    </section>
+    <section id="view-year" aria-labelledby="tab-year" hidden></section>
+    <section id="view-list" aria-labelledby="tab-list"></section>
+    <section id="view-tracker" aria-labelledby="tab-tracker" hidden></section>
+    <section id="view-missions" aria-labelledby="tab-missions" hidden></section>
+    <section id="view-about" aria-labelledby="tab-about" hidden></section>
+  </main>
+
+  <aside class="favs" id="favs" aria-label="Favorites">
+    <h2>★ Favorites <button class="btn small close" id="favClose" type="button">Close</button></h2>
+    <div class="favsum" id="favsum"></div>
+    <ul class="favlist" id="favlist"></ul>
+    <div class="favfoot" id="favfoot"></div>
+  </aside>
+</div>
+<footer class="wrap foot">
+  <span>CE Hub 2027 · listings re-checked weekly</span>
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+  <a href="https://www.eyelovetravel.com/">EyeLoveTravel</a>
+  <span>Dates and state rules are compiled from public sources; confirm with the organizer and your state board.</span>
+</footer>
+<button class="btn primary fab" id="fab" type="button">★ Favorites</button>
+
+<dialog id="dlg"><div class="dlg" id="dlgBody"></div></dialog>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.1/dist/umd/supabase.js"></script>
+<script>
+(function(){
+"use strict";
+const YEAR = 2027;
+const CATS = {
+  national:{label:"National", c:"--c-national"}, state:{label:"State association", c:"--c-state"},
+  specialty:{label:"Specialty", c:"--c-specialty"}, travel:{label:"Travel / destination", c:"--c-travel"},
+  school:{label:"School of optometry", c:"--c-school"}, regional:{label:"Regional", c:"--c-regional"},
+  canada:{label:"Canada", c:"--c-canada"}, industry:{label:"Industry & buying groups", c:"--c-industry"},
+  ophthalmology:{label:"Ophthalmology & surgical", c:"--c-ophthalmology"}, procedures:{label:"Hands-on & procedures", c:"--c-procedures"},
+  online:{label:"Online CE", c:"--c-online"}, local:{label:"Local & referral-center", c:"--c-local"}, staff:{label:"Staff, tech & optician", c:"--c-staff"}, mission:{label:"Mission & volunteer", c:"--c-mission"}
+};
+const FOCI = ["Vision therapy & neuro-rehab","Low vision","Pediatrics","Myopia & ortho-k","Contact lens & scleral","Glaucoma","Retina","Cornea & dry eye","Cataract & refractive surgery","Neuro-ophthalmology","Oculoplastics","Uveitis & oncology","Co-management","Research"];
+const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const MON3 = MONTHS.map(m=>m.slice(0,3).toUpperCase());
+const US = {AL:"Alabama",AK:"Alaska",AZ:"Arizona",AR:"Arkansas",CA:"California",CO:"Colorado",CT:"Connecticut",DE:"Delaware",DC:"District of Columbia",FL:"Florida",GA:"Georgia",HI:"Hawaii",ID:"Idaho",IL:"Illinois",IN:"Indiana",IA:"Iowa",KS:"Kansas",KY:"Kentucky",LA:"Louisiana",ME:"Maine",MD:"Maryland",MA:"Massachusetts",MI:"Michigan",MN:"Minnesota",MS:"Mississippi",MO:"Missouri",MT:"Montana",NE:"Nebraska",NV:"Nevada",NH:"New Hampshire",NJ:"New Jersey",NM:"New Mexico",NY:"New York",NC:"North Carolina",ND:"North Dakota",OH:"Ohio",OK:"Oklahoma",OR:"Oregon",PA:"Pennsylvania",PR:"Puerto Rico",RI:"Rhode Island",SC:"South Carolina",SD:"South Dakota",TN:"Tennessee",TX:"Texas",UT:"Utah",VT:"Vermont",VA:"Virginia",WA:"Washington",WV:"West Virginia",WI:"Wisconsin",WY:"Wyoming"};
+const CFG = window.CEHUB_CONFIG || {};
+const HOME_DEFAULT = CFG.defaultHome || null;
+
+const S = {
+  events:[], req:null, reqMd:null, meta:null, loaded:false, dbOk:null,
+  profile:{favorites:[], licenses:[], home:HOME_DEFAULT},
+  transcript:{rows:[]},
+  view:"list", missions:[], mf:{q:"",scope:"",role:"",faith:"",chapters:"",nearby:false,org:""},
+  f:{q:"", region:"", focus:"", format:"", credit:"", minHours:0, maxMiles:0, showTba:true, favOnly:false, cats:new Set(Object.keys(CATS))},
+  uid:null, email:"", personalMode:"local", pendingImport:null, downloads:true
+};
+const $ = s=>document.querySelector(s);
+const el = (tag, attrs={}, ...kids)=>{ const n=document.createElement(tag); for(const [k,v] of Object.entries(attrs||{})){ if(v==null||v===false) continue; if(k==="class") n.className=v; else if(k==="text") n.textContent=v; else if(k.startsWith("on")) n.addEventListener(k.slice(2),v); else if(k==="style") n.setAttribute("style",v); else n.setAttribute(k, v===true?"":v);} for(const k of kids.flat()){ if(k==null||k===false) continue; n.append(k.nodeType?k:document.createTextNode(String(k))); } return n; };
+const esc = s=>String(s??"");
+function toast(msg){ const t=el("div",{class:"toast",role:"status",text:msg}); document.body.append(t); setTimeout(()=>t.remove(),2600); }
+function catVar(cat){ return "var("+(CATS[cat]?.c||"--c-industry")+")"; }
+
+/* ---------- dates ---------- */
+function pd(s){ if(!s) return null; const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); }
+function iso(d){ return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); }
+function today(){ const n=new Date(); return new Date(n.getFullYear(),n.getMonth(),n.getDate()); }
+function fmtRange(e, short){
+  if(e.status==="ongoing") return short? "ONGOING" : "Year-round / recurring";
+  if(!e.start) return e.tbaMonth ? (short? "TBA" : MONTHS[e.tbaMonth-1]+" (dates TBA)") : "Dates TBA";
+  const a=pd(e.start), b=pd(e.end||e.start);
+  const mA=MON3[a.getMonth()], mB=MON3[b.getMonth()];
+  const ya=a.getFullYear()!==YEAR? " "+a.getFullYear():"";
+  if(short){ return mA===mB && !ya ? mA+" "+a.getDate()+(b>a?"–"+b.getDate():"") : mA+" "+a.getDate()+ya+"–"+mB+" "+b.getDate(); }
+  const fmt=d=>d.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric",year:"numeric"});
+  return b>a ? fmt(a)+" – "+fmt(b) : fmt(a);
+}
+function daysBetween(a,b){ return Math.round((b-a)/864e5); }
+
+/* ---------- distance ---------- */
+function miles(e){ const h=S.profile.home||HOME_DEFAULT; if(!h||e.lat==null||e.lon==null||h.lat==null) return null; const R=3958.8, r=x=>x*Math.PI/180; const dLat=r(e.lat-h.lat), dLon=r(e.lon-h.lon); const a=Math.sin(dLat/2)**2+Math.cos(r(h.lat))*Math.cos(r(e.lat))*Math.sin(dLon/2)**2; return Math.round(2*R*Math.asin(Math.sqrt(a))); }
+
+/* ---------- status badges ---------- */
+function isNew(e){ const m=S.meta; if(!m||!e.addedAt) return false; if(m.launchedAt && e.addedAt<=m.launchedAt) return false; return daysBetween(pd(e.addedAt), today())<=14; }
+function isUpd(e){ if(!e.updatedAt||!e.addedAt||e.updatedAt===e.addedAt) return false; return daysBetween(pd(e.updatedAt), today())<=14; }
+function badges(e){ const b=[]; if(e.sponsored) b.push(el("span",{class:"badge b-sp",text:e.sponsorLabel||"Sponsored"})); if(isNew(e)) b.push(el("span",{class:"badge b-new",text:"New"})); else if(isUpd(e)) b.push(el("span",{class:"badge b-upd",text:"Updated"})); if(e.status==="tba") b.push(el("span",{class:"badge b-tba",text:"Dates TBA"})); const fm=e.format; if(fm&&fm!=="in-person") b.push(el("span",{class:"badge b-upd",text:{"live-online":"Live online","on-demand":"On demand","hybrid":"Hybrid"}[fm]||fm})); return b; }
+function locLine(e){ const parts=[e.city]; if(e.country==="US"||!e.country) parts.push(e.region); else if(e.country!=="Cruise") parts.push(e.country); return parts.filter(Boolean).filter((v,i,a)=>a.indexOf(v)===i).join(", "); }
+function hoursText(e){ return e.copeHours ? "Up to "+e.copeHours+" hrs" : e.cmeHours ? "Up to "+e.cmeHours+" CME credits" : (e.status==="ongoing"? "Hours vary" : "Hours TBA"); }
+function creditText(e){ return [e.cope||null, hasAma(e)&&!/AMA PRA/i.test(e.cope||"")? "AMA PRA Category 1 CME" : null].filter(Boolean).join(" · "); }
+
+/* ---------- favorites ---------- */
+function isFav(id){ return S.profile.favorites.includes(id); }
+function toggleFav(id){ const f=S.profile.favorites; const i=f.indexOf(id); if(i>=0) f.splice(i,1); else f.push(id); saveProfile(); renderAll(); }
+function starBtn(e){ const on=isFav(e.id); return el("button",{class:"star",type:"button","aria-pressed":on?"true":"false","aria-label":(on?"Remove ":"Add ")+e.name+(on?" from":" to")+" favorites",title:on?"Remove from favorites":"Add to favorites",onclick:ev=>{ev.stopPropagation();toggleFav(e.id);}}, on?"★":"☆"); }
+
+/* ---------- filtering ---------- */
+function regionKey(e){ if(e.country==="US"||!e.country) return e.region; if(e.country==="Canada") return "CANADA"; if(e.country==="Online") return "ONLINE"; if(e.country==="Cruise") return "CRUISE"; return "INTL"; }
+function passes(e){
+  const f=S.f;
+  if(!f.cats.has(e.category)) return false;
+  if(!f.showTba && e.status==="tba") return false;
+  if(f.favOnly && !isFav(e.id)) return false;
+  if(f.region && regionKey(e)!==f.region) return false;
+  if(f.focus && !(e.focus||[]).includes(f.focus)) return false;
+  if(f.format){ const fm=e.format||"in-person"; if(f.format==="live-online"? !(fm==="live-online"||fm==="hybrid") : f.format==="in-person"? !(fm==="in-person"||fm==="hybrid") : fm!==f.format) return false; }
+  if(f.credit==="cope" && !hasCope(e)) return false;
+  if(f.credit==="ama1" && !hasAma(e)) return false;
+  if(f.minHours && !((e.copeHours||e.cmeHours||0)>=f.minHours)) return false;
+  if(f.maxMiles && (S.profile.home||HOME_DEFAULT)){ const m=miles(e); if(m==null||m>f.maxMiles) return false; }
+  if(f.q){ const hay=(e.name+" "+e.org+" "+(e.focus||[]).join(" ")+" "+e.city+" "+e.region+" "+(US[e.region]||"")+" "+e.country+" "+(e.venue||"")+" "+(e.notes||"")).toLowerCase(); if(!f.q.toLowerCase().split(/\s+/).every(w=>hay.includes(w))) return false; }
+  return true;
+}
+function sortEvents(list){ return list.slice().sort((a,b)=>{ if(!!b.sponsored!==!!a.sponsored) return b.sponsored?1:-1; const ka=a.start||(YEAR+"-"+String(a.tbaMonth||13).padStart(2,"0")+"-99"), kb=b.start||(YEAR+"-"+String(b.tbaMonth||13).padStart(2,"0")+"-99"); return ka.localeCompare(kb)||a.name.localeCompare(b.name); }); }
+function monthOf(e){ if(e.start){ const d=pd(e.start); return d.getFullYear()<YEAR?0:d.getMonth(); } return e.tbaMonth? e.tbaMonth-1 : null; }
+
+/* ---------- views ---------- */
+function setView(v){
+  S.view=v;
+  for(const b of document.querySelectorAll("nav.tabs button")) b.setAttribute("aria-selected", b.dataset.view===v?"true":"false");
+  for(const k of ["year","list","tracker","missions","about"]) $("#view-"+k).hidden = k!==v;
+  $("#filters").hidden = !(v==="year"||v==="list");
+  try{ localStorage.setItem("cehub.view",v);}catch(e){}
+  renderAll();
+}
+
+function renderEmptyState(target){
+  target.replaceChildren(el("div",{class:"empty"}, el("b",{text: S.dbOk===false ? "Couldn't load the listings" : "Loading the 2027 listings…"}),
+    S.dbOk===false ? "Check your connection and refresh the page." : "Meetings, travel CE and state association conventions appear here in a moment."));
+}
+
+function renderYear(){
+  const box=$("#view-year");
+  if(!S.loaded){ renderEmptyState(box); return; }
+  const list=sortEvents(S.events.filter(passes));
+  const byM=Array.from({length:12},()=>({dated:[],tba:[]})); const noMonth=[], ongoing=[];
+  for(const e of list){ if(e.status==="ongoing"){ ongoing.push(e); continue; } const m=monthOf(e); if(m==null){ noMonth.push(e); continue; } (e.start?byM[m].dated:byM[m].tba).push(e); }
+  const grid=el("div",{class:"year"});
+  byM.forEach((g,i)=>{
+    const ul=el("ul",{class:"mlist"});
+    g.dated.forEach(e=>ul.append(yearRow(e)));
+    if(g.tba.length){ ul.append(el("li",{class:"tbahead",text:"Usually this month · dates TBA"})); g.tba.forEach(e=>ul.append(yearRow(e))); }
+    const hrs=g.dated.reduce((s,e)=>s+(e.copeHours||0),0);
+    grid.append(el("article",{class:"month","aria-label":MONTHS[i]+" "+YEAR},
+      el("h3",{}, MONTHS[i], el("small",{text:g.dated.length+" dated"+(g.tba.length?" · "+g.tba.length+" TBA":"")})),
+      (g.dated.length||g.tba.length)? ul : el("p",{class:"mempty",text:"Nothing matches your filters this month."})));
+  });
+  if(noMonth.length){ const ul=el("ul",{class:"mlist"}); noMonth.forEach(e=>ul.append(yearRow(e))); grid.append(el("article",{class:"month"}, el("h3",{},"Month not yet known", el("small",{text:noMonth.length+" TBA"})), ul)); }
+  if(ongoing.length){ const ul=el("ul",{class:"mlist"}); ongoing.forEach(e=>ul.append(yearRow(e))); grid.append(el("article",{class:"month"}, el("h3",{},"Year-round, online & recurring", el("small",{text:ongoing.length+" programs"})), ul)); }
+  box.replaceChildren(grid);
+}
+function yearRow(e){
+  const m=miles(e);
+  return el("li",{class:"erow"+(e.start?"":" tba")+(e.sponsored?" sponsored":""),style:"--c:"+catVar(e.category),tabindex:"0",role:"button","aria-label":e.name+", "+fmtRange(e),
+      onclick:()=>openDetail(e.id), onkeydown:ev=>{ if(ev.target!==ev.currentTarget) return; if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();openDetail(e.id);} }},
+    el("div",{class:"d"}, e.start? fmtRange(e,true) : (e.status==="ongoing"? ({"live-online":"LIVE ONLINE","on-demand":"ON DEMAND","hybrid":"HYBRID"}[e.format]||"RECURRING") : "TBA"), el("small",{text: e.copeHours? e.copeHours+" hrs":""})),
+    el("div",{class:"t"}, el("b",{}, e.name, badges(e)), el("span",{text: locLine(e)+(m!=null&&e.country!=="Cruise"? " · ~"+m.toLocaleString()+" mi":"")})),
+    starBtn(e));
+}
+
+function contactBits(e){
+  const bits=[];
+  if(e.email) bits.push(el("span",{}, "Email ", el("span",{class:"sel",text:e.email}), copyBtn(e.email)));
+  if(e.phone) bits.push(el("span",{}, "Phone ", el("span",{class:"sel",text:e.phone}), copyBtn(e.phone.replace(/\s*\(.*\)$/,""))));
+  return bits;
+}
+function copyBtn(txt){ return el("button",{class:"copy",type:"button","aria-label":"Copy "+txt,onclick:async ev=>{ev.stopPropagation(); try{ await navigator.clipboard.writeText(txt); toast("Copied "+txt);}catch(err){ toast("Select the text to copy it"); }}},"Copy"); }
+function gcalUrl(e){ if(!e.start) return null; const a=e.start.replace(/-/g,""); const end=pd(e.end||e.start); end.setDate(end.getDate()+1); const b=iso(end).replace(/-/g,""); const p=new URLSearchParams({action:"TEMPLATE",text:e.name,dates:a+"/"+b,details:(e.org+"\n"+(e.regUrl||e.infoUrl||"")),location:[e.venue,locLine(e)].filter(Boolean).join(", ")}); return "https://calendar.google.com/calendar/render?"+p.toString(); }
+function regLabel(e){ if(e.status==="ongoing" && !e.regStatus) return "Go to program"; return {open:"Register",soon:"Get registration alert",interest:"Join interest list"}[e.regStatus] || (e.regUrl? "Register":"Event page"); }
+function actionBtns(e){
+  const a=[];
+  const reg=e.regUrl||e.infoUrl;
+  if(reg) a.push(el("a",{class:"btn primary",href:reg,target:"_blank",rel:"noopener"}, regLabel(e)+" ↗"));
+  if(e.infoUrl && e.infoUrl!==reg) a.push(el("a",{class:"btn",href:e.infoUrl,target:"_blank",rel:"noopener"},"Event details ↗"));
+  const g=gcalUrl(e); if(g) a.push(el("a",{class:"btn",href:g,target:"_blank",rel:"noopener"},"Add to Google Calendar ↗"));
+  const on=isFav(e.id); a.push(el("button",{class:"btn",type:"button","aria-pressed":on?"true":"false",onclick:()=>toggleFav(e.id)}, on?"★ Favorited":"☆ Add to favorites"));
+  return a;
+}
+
+function renderList(){
+  const box=$("#view-list");
+  if(!S.loaded){ renderEmptyState(box); return; }
+  const list=sortEvents(S.events.filter(passes));
+  const sp=list.filter(e=>e.sponsored), rest=list.filter(e=>!e.sponsored);
+  const out=[];
+  if(sp.length){ out.push(el("h2",{class:"sec-h",text:"Featured"})); out.push(el("div",{class:"cards"}, sp.map(card))); }
+  const dated=rest.filter(e=>e.start), tba=rest.filter(e=>!e.start && e.status!=="ongoing"), ong=rest.filter(e=>e.status==="ongoing");
+  out.push(el("div",{class:"cards"}, dated.map(card)));
+  if(tba.length){ out.push(el("h2",{class:"sec-h",text:"Dates not yet announced"})); out.push(el("p",{class:"note",text:"These meetings ran in 2026 and are expected again in 2027. The weekly update fills in dates as organizers post them."})); out.push(el("div",{class:"cards"}, tba.map(card))); }
+  if(ong.length){ out.push(el("h2",{class:"sec-h",text:"Year-round, online & recurring programs"})); out.push(el("p",{class:"note",text:"Online libraries, live webinar series, local referral-center CE and volunteer programs that run all year. Live online (real-time interactive) hours count toward the live requirement in many states, including Virginia; on-demand hours usually count as self-study."})); out.push(el("div",{class:"cards"}, ong.map(card))); }
+  if(!list.length) out.push(el("div",{class:"empty"}, el("b",{text:"No meetings match"}), "Clear a filter or widen the distance to see more."));
+  box.replaceChildren(...out);
+}
+function card(e){
+  const a=pd(e.start); const m=miles(e);
+  return el("article",{class:"card"+(e.sponsored?" sponsored":""),style:"--c:"+catVar(e.category)},
+    el("div",{class:"cdate"}, a? [el("div",{class:"m",text:MON3[a.getMonth()]+(a.getFullYear()!==YEAR?" "+a.getFullYear():"")}), el("div",{class:"dd",text:fmtRange(e,true).replace(/^[A-Z]{3} /,"")})] : [el("div",{class:"m",text:e.status==="ongoing"?"2027":(e.tbaMonth?MON3[e.tbaMonth-1]:"2027")}), el("div",{class:"dd",text:e.status==="ongoing"?({"live-online":"Live","on-demand":"Online","hybrid":"Hybrid"}[e.format]||"Year-round"):"TBA"})]),
+    el("div",{class:"cbody"},
+      el("span",{class:"cat",style:"--c:"+catVar(e.category),text:(CATS[e.category]?.label||e.category)+((e.focus&&e.focus.length)? " · "+e.focus.join(", "):"")}),
+      el("h4",{}, e.name, badges(e)),
+      el("div",{class:"meta"}, el("span",{}, el("b",{text:fmtRange(e)})), el("span",{text:[e.venue,locLine(e)].filter(Boolean).join(" · ")}), m!=null&&e.country!=="Cruise"? el("span",{text:"~"+m.toLocaleString()+" mi from "+(S.profile.home?.name||"home")}):null),
+      el("div",{class:"meta"}, el("span",{}, "Organizer: ", el("b",{text:e.org})), el("span",{text:[hoursText(e),creditText(e)].filter(Boolean).join(" · ")})),
+      e.notes? el("p",{class:"note",text:e.notes}) : null,
+      el("div",{class:"contact"}, contactBits(e)),
+      el("div",{class:"actions"}, actionBtns(e))),
+    starBtn(e));
+}
+
+function openDetail(id){
+  const e=S.events.find(x=>x.id===id); if(!e) return;
+  const m=miles(e);
+  const rows=[["Dates",fmtRange(e)],["Location",[e.venue,locLine(e)].filter(Boolean).join(", ")],["Organizer",e.org],["Type",CATS[e.category]?.label||e.category],["Topics",(e.focus||[]).join(", ")||"General"],["Format",{"in-person":"In person","live-online":"Live online (real-time)","on-demand":"On demand (self-study)","hybrid":"Hybrid (in person + live online)"}[e.format||"in-person"]],["CE",hoursText(e)],["COPE",e.cope||"—"],["Physician CME",hasAma(e)? "AMA PRA Category 1"+(e.cmeHours? " · up to "+e.cmeHours+" credits":"") : "—"]];
+  if(m!=null&&e.country!=="Cruise") rows.push(["Distance","~"+m.toLocaleString()+" mi straight-line from "+(S.profile.home?.name||"home")]);
+  if(e.notes) rows.push(["Notes",e.notes]);
+  rows.push(["Last checked",e.verifiedAt? pd(e.verifiedAt).toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"}):"—"]);
+  const body=$("#dlgBody");
+  body.replaceChildren(
+    el("span",{class:"cat",style:"--c:"+catVar(e.category),text:CATS[e.category]?.label||""}),
+    el("h2",{}, e.name, badges(e)),
+    el("dl",{class:"kv"}, rows.flatMap(([k,v])=>[el("dt",{text:k}), el("dd",{text:v})])),
+    el("div",{class:"contact"}, contactBits(e)),
+    el("div",{class:"actions"}, actionBtns(e), el("button",{class:"btn ghost",type:"button",onclick:()=>$("#dlg").close()},"Close")));
+  const d=$("#dlg"); if(!d.open) d.showModal();
+}
+$("#dlg").addEventListener("click",ev=>{ if(ev.target.id==="dlg") ev.target.close(); });
+
+/* ---------- favorites rail ---------- */
+function renderFavs(){
+  const favs=sortEvents(S.events.filter(e=>isFav(e.id)));
+  const favM=S.missions.filter(x=>isFav(x.id));
+  const hrs=favs.reduce((s,e)=>s+(e.copeHours||0),0), unknown=favs.filter(e=>!e.copeHours).length;
+  $("#fab").textContent="★ Favorites ("+(favs.length+favM.length)+")";
+  $("#favsum").replaceChildren(favs.length? el("span",{}, el("b",{text:favs.length+" meeting"+(favs.length===1?"":"s")}), " · up to ", el("b",{text:hrs+" COPE hrs"}), unknown? " ("+unknown+" with hours TBA)":"") : "Star a meeting to plan your year.");
+  const ul=$("#favlist");
+  if(!favs.length && !favM.length){ ul.replaceChildren(el("li",{class:"favempty"}, "Use ☆ on any listing. Your favorites sync to your account and count as planned hours in the license tracker.")); }
+  else ul.replaceChildren(...favs.map(e=>el("li",{},
+    el("div",{class:"d",text: e.start? fmtRange(e,true) : e.status==="ongoing"? "ONGOING" : (e.tbaMonth? MON3[e.tbaMonth-1]+" TBA":"TBA")}),
+    el("div",{class:"t",role:"button",tabindex:"0",onclick:()=>{openDetail(e.id);closeDrawer();},onkeydown:ev=>{if(ev.key==="Enter"){openDetail(e.id);closeDrawer();}}}, el("b",{text:e.name}), el("span",{text:locLine(e)+(e.copeHours?" · "+e.copeHours+" hrs":"")})),
+    el("button",{class:"x",type:"button","aria-label":"Remove "+e.name,onclick:()=>toggleFav(e.id)},"×"))));
+  if(favM.length) ul.append(...favM.map(x=>el("li",{},
+    el("div",{class:"d",text:"MISSION"}),
+    el("div",{class:"t"}, el("a",{href:x.url,target:"_blank",rel:"noopener",style:"color:inherit;text-decoration:none"}, el("b",{text:x.name})), el("span",{text:x.regions})),
+    el("button",{class:"x",type:"button","aria-label":"Remove "+x.name,onclick:()=>toggleFav(x.id)},"×"))));
+  const foot=$("#favfoot"); foot.replaceChildren();
+  if(favs.length){
+    if(S.downloads) foot.append(el("button",{class:"btn small",type:"button",onclick:exportPlan},"Download plan (CSV)"));
+    foot.append(el("button",{class:"btn small ghost",type:"button",onclick:()=>{ S.f.favOnly=true; $("#favOnly").checked=true; setView("list"); closeDrawer(); }},"Show as list"));
+  }
+  if(S.personalMode==="local") foot.append(el("p",{class:"note",text: sb? "Saved in this browser. Sign in to keep favorites on every device." : "Saved in this browser."}));
+}
+function openDrawer(){ $("#favs").classList.add("open"); }
+function closeDrawer(){ $("#favs").classList.remove("open"); }
+$("#fab").addEventListener("click",()=>$("#favs").classList.toggle("open"));
+$("#favClose").addEventListener("click",closeDrawer);
+
+function csvCell(v){ v=String(v??""); return /[",\n]/.test(v)? '"'+v.replace(/"/g,'""')+'"' : v; }
+function saveFile(filename, text){
+  const blob=new Blob([text],{type:"text/csv;charset=utf-8"}); const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob); a.download=filename; document.body.append(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+}
+function exportPlan(){
+  const favs=sortEvents(S.events.filter(e=>isFav(e.id)));
+  const head=["Subject","Start Date","End Date","All Day Event","Location","Description"];
+  const usd=s=>{ const d=pd(s); return (d.getMonth()+1)+"/"+d.getDate()+"/"+d.getFullYear(); };
+  const rows=favs.filter(e=>e.start).map(e=>[e.name,usd(e.start),usd(e.end||e.start),"True",[e.venue,locLine(e)].filter(Boolean).join(", "),e.org+" | "+hoursText(e)+" | "+(e.regUrl||e.infoUrl||"")+(e.email?" | "+e.email:"")+(e.phone?" | "+e.phone:"")]);
+  saveFile("ce-plan-2027.csv",[head,...rows].map(r=>r.map(csvCell).join(",")).join("\n"));
+}
+
+/* ---------- requirements & tracker ---------- */
+/* COPE course categories: the two letters after the dash in a COPE course ID (e.g. 99994-GL) */
+const COPE_CATS={
+  CL:["Contact Lenses","Clinical optometry","general"], FV:["Functional Vision / Pediatrics","Clinical optometry","general"],
+  GO:["General Optometry","Clinical optometry","general"], LV:["Low Vision / Vision Rehabilitation","Clinical optometry","general"],
+  PB:["Public Health","Clinical optometry","general"],
+  GL:["Glaucoma","Ocular disease","ther"], IS:["Injection Skills","Ocular disease","ther"], LP:["Laser Procedures","Ocular disease","ther"],
+  PO:["Peri-Operative Management of Ophthalmic Surgery","Ocular disease","ther"], SP:["Surgery Procedures (Optometric)","Ocular disease","ther"],
+  TD:["Treatment & Management of Ocular Disease","Ocular disease","ther"],
+  AS:["Treatment & Management: Anterior Segment (older code)","Ocular disease","ther"], PS:["Treatment & Management: Posterior Segment (older code)","Ocular disease","ther"],
+  RS:["Refractive Surgery Management (older code)","Ocular disease","ther"],
+  NO:["Neuro-Optometry","Related systemic disease","ther"], PH:["Pharmacology","Related systemic disease","ther"],
+  SD:["Systemic / Ocular Disease","Related systemic disease","ther"], OP:["Oral Pharmaceuticals (older code)","Related systemic disease","ther"],
+  PD:["Principles of Diagnosis (older code)","Related systemic disease","ther"],
+  EJ:["Ethics / Jurisprudence","Business management","ej"], PM:["Practice Management","Business management","pm"]
+};
+const COPE_ID_RX=/\b(\d{3,6})\s?[-–]\s?([A-Z]{2})\b/, COPE_ID_STRICT=/\b(\d{4,6})\s?[-–]\s?([A-Z]{2})\b/;
+function copeFrom(txt, strict){ const m=String(txt||"").toUpperCase().match(strict? COPE_ID_STRICT : COPE_ID_RX); return m&&COPE_CATS[m[2]]? {id:m[1]+"-"+m[2], code:m[2]} : null; }
+function copeCodeFromCat(cat){
+  const c=String(cat||"").trim(), u=c.toUpperCase(); if(!c) return null; if(COPE_CATS[u]) return u;
+  const lc=c.toLowerCase().replace(/&/g,"and").replace(/[^a-z ]/g," ").replace(/\s+/g," ").trim(); if(lc.length<4) return null;
+  for(const [k,v] of Object.entries(COPE_CATS)){ const n=v[0].toLowerCase().replace(/&/g,"and").replace(/\(.*\)/,"").replace(/[^a-z ]/g," ").replace(/\s+/g," ").trim(); if(n===lc||n.startsWith(lc)||lc.startsWith(n)) return k; }
+  return null;
+}
+/* COPE code for a transcript row: from its course ID, its category text, or its title */
+function rowCope(r){ if(r.copeCode&&COPE_CATS[r.copeCode]) return r.copeCode; return copeFrom(r.courseId)?.code || copeFrom(r.category)?.code || copeCodeFromCat(r.category) || copeFrom(r.title,true)?.code || null; }
+function copeLabel(code){ return code&&COPE_CATS[code]? code+" · "+COPE_CATS[code][0] : ""; }
+/* State-mandated topics that a COPE category can verify */
+
+/* ---------- professions, credit types, physician rules ---------- */
+const PROF={
+  od:{label:"Optometrist (OD)", board:"State board of optometry", credit:"COPE-approved CE"},
+  md:{label:"Ophthalmologist (MD)", board:"State medical board", credit:"AMA PRA Category 1 CME"},
+  do:{label:"Ophthalmologist (DO)", board:"Osteopathic or medical board", credit:"AOA Category 1-A and AMA PRA Category 1 CME"}
+};
+const CERT_LABEL={none:"Not board certified / not participating", abo:"American Board of Ophthalmology (ABO) diplomate", aoboo:"AOBOO-HNS (osteopathic) certified"};
+const CREDIT_LABEL={cope:"COPE (optometry)", ama1:"AMA PRA Category 1", ama1sa:"AMA PRA Cat 1 · self-assessment", ama2:"AMA PRA Category 2", aoa1a:"AOA Category 1-A", aoa1b:"AOA Category 1-B", aoa2:"AOA Category 2", other:"Other / not accredited"};
+function person(){ return S.profile.person||{}; }
+function profession(){ return person().profession || (S.profile.licenses.length? "od" : null); }
+function isPhys(p){ p=p===undefined? profession() : p; return p==="md"||p==="do"; }
+function licKind(lic){ return lic.kind || person().profession || "od"; }
+function guessCredit(txt, code, prof){
+  const s=String(txt||"");
+  if(/\bAOA\b[^.]{0,40}\b1-?A\b|Category 1-?A\b/i.test(s)) return "aoa1a";
+  if(/\bAOA\b[^.]{0,40}\b1-?B\b|Category 1-?B\b/i.test(s)) return "aoa1b";
+  if(/\bAOA\b[^.]{0,40}Cat(egory)?\.?\s?2/i.test(s)) return "aoa2";
+  if(/Cat(egory)?\.?\s?2\b|Category II\b/i.test(s)) return "ama2";
+  if(/AMA PRA|Cat(egory)?\.?\s?1\b|Category I\b/i.test(s)) return /self.?assess/i.test(s)? "ama1sa" : "ama1";
+  if(code || /\bCOPE\b/i.test(s)) return "cope";
+  return isPhys(prof)? "ama1" : "cope";
+}
+function rowCredit(r){ return r.credit || (rowCope(r)? "cope" : (isPhys()? "other" : "cope")); }
+function hasAma(e){ return (e.credits||[]).some(c=>/AMA PRA/i.test(c)); }
+function hasCope(e){ return e.copeHours>0 || /COPE (accredited|approved)|lists COPE|COPE-accredited|COPE credit (available|offered)/i.test(e.cope||""); }
+function medRule(code, kind){
+  const st=S.reqMd?.states?.[code]; if(!st||!st.md) return null;
+  const r=(kind==="do"&&st.do)? {...st.md,...st.do} : st.md;
+  return {...r, code, name:st.name, confidence:st.confidence, kind, hasDoRule: kind==="do"&&!!st.do};
+}
+function ruleStates(kind){ return kind==="od"? Object.values(S.req?.states||{}).map(s=>({code:s.code,name:s.name})) : Object.values(S.reqMd?.states||{}).map(s=>({code:s.code,name:s.name})); }
+function ruleSummary(kind, code){
+  if(kind==="od"){ const r=S.req?.states?.[code]; if(!r) return ""; return "State board of optometry: "+r.total+" hrs every "+(r.cycleYears>1? r.cycleYears+" years":"year")+" ("+r.period+")"+(r.liveMin?" · "+r.liveMin+" live minimum":"")+(r.therMin?" · "+r.therMin+" therapeutic minimum":""); }
+  const r=medRule(code,kind); if(!r) return "";
+  if(!r.total) return (kind==="do"&&r.hasDoRule?"Osteopathic board":"Medical board")+": no general CME hours required"+(r.mandatory?.length? " · "+r.mandatory.length+" required topic"+(r.mandatory.length>1?"s":"") : "")+" · "+r.period;
+  return (kind==="do"&&r.hasDoRule?"Osteopathic board":"Medical board")+": "+r.total+" hrs every "+(r.cycleYears>1? r.cycleYears+" years":"year")+(r.cat1Min? (r.cat1Min>=r.total? ", all Category 1" : ", at least "+r.cat1Min+" Category 1") : "")+" · "+r.period;
+}
+/* required topics matched to course titles */
+const TOPIC_KW=[
+  [/opioid|controlled.substance|prescrib|pain|substance use|addiction|narcotic|kasper|diversion|buprenorphine/i, /opioid|controlled substance|prescrib|pain|substance use|addiction|narcotic|buprenorphine|diversion|kasper|mate act/i],
+  [/implicit bias|cultural|equity|racism|lgbtq/i, /implicit bias|cultural|equity|racism|lgbt|disparit/i],
+  [/medical error|patient safety|risk management/i, /medical error|patient safety|risk management|malpractice/i],
+  [/human trafficking/i, /trafficking/i], [/domestic violence/i, /domestic violence|intimate partner/i],
+  [/end.of.life|palliative/i, /end.of.life|palliative|hospice/i], [/infection|infectious/i, /infection|infectious|steril/i],
+  [/child abuse/i, /child abuse|mandated report/i], [/dementia|alzheimer/i, /dementia|alzheimer/i], [/suicide/i, /suicide/i],
+  [/sexual (misconduct|harassment)/i, /sexual (misconduct|harassment)|boundar/i], [/\bHIV\b/i, /\bHIV\b/i], [/nutrition/i, /nutrition/i],
+  [/ethic|jurisprud|laws? (&|and) rules|professional responsibility/i, /ethic|jurisprud|law|professional responsib|regulat/i]
+];
+function topicHours(m, rows){ const t=TOPIC_KW.find(([rx])=>rx.test(m)); if(!t) return null; return rows.filter(x=>t[1].test(x.title||"")).reduce((s,x)=>s+(+x.hours||0),0); }
+const MATE_RX=/opioid|substance use|addiction|buprenorphine|mate act|controlled substance|pain management/i;
+
+function medCalc(lic){
+  const r=medRule(lic.state, licKind(lic)); if(!r) return null;
+  const end=pd(lic.renewal); if(!end) return {r, noDate:true};
+  const start=new Date(end); start.setFullYear(start.getFullYear()-(r.cycleYears||2)); start.setDate(start.getDate()+1);
+  const sIso=iso(start), eIso=iso(end);
+  const rows=S.transcript.rows.filter(x=>x.date>=sIso && x.date<=eIso);
+  let ama1=0, aoa1a=0, cat2=0, cope=0, other=0;
+  for(const x of rows){ const h=+x.hours||0, c=rowCredit(x);
+    if(c==="ama1"||c==="ama1sa") ama1+=h; else if(c==="aoa1a") aoa1a+=h; else if(c==="aoa1b"||c==="aoa2"||c==="ama2") cat2+=h; else if(c==="cope") cope+=h; else other+=h; }
+  const doStrict=r.kind==="do"&&r.hasDoRule;
+  const cat1= doStrict? aoa1a : ama1+aoa1a;          // osteopathic boards ask for AOA 1-A specifically
+  const rest= doStrict? cat2+ama1 : cat2;
+  const total=r.total||0;
+  let counted=cat1+rest;
+  if(r.cat1Min!=null && r.cat1Min>=total) counted=cat1;
+  const t=today();
+  const planned=S.events.filter(e=>isFav(e.id) && e.start && e.start>=sIso && e.start<=eIso && pd(e.start)>=t && hasAma(e));
+  const planHrs=planned.reduce((s,e)=>s+(e.cmeHours||0),0), planUnknown=planned.filter(e=>!e.cmeHours).length;
+  return {r, start, end, rows, ama1, aoa1a, cat1, rest, cope, other, counted, total, planned, planHrs, planUnknown, daysLeft:daysBetween(t,end), doStrict};
+}
+function srcLinks(urls){ return (urls||[]).slice(0,3).flatMap((u,i)=>{ let h=u; try{ h=new URL(u).hostname.replace(/^www\./,""); }catch(e){} return [i?", ":"", el("a",{href:u,target:"_blank",rel:"noopener",text:h})]; }); }
+function mandList(lic, items, rows, copeAware){
+  lic.done=lic.done||{};
+  return el("ul",{class:"mand"}, items.map(m=>{
+    let auto=null;
+    const mc=copeAware? MAND_COPE.find(([rx])=>rx.test(m)) : null;
+    const need=parseFloat((m.match(/(\d+(?:\.\d+)?)\s*(?:hrs?|hours?)\b/i)||[])[1])||0;
+    if(mc){ const have=rows.filter(x=>mc[1].includes(rowCope(x))).reduce((s,x)=>s+(+x.hours||0),0);
+      auto=el("span",{class:"note "+(need&&have>=need?"ok":""),text:fmtH(have)+(need? " of "+fmtH(need):"")+" logged under COPE "+mc[1].join("/")+" this cycle"+(need&&have>=need?" ✓":"")}); }
+    else { const th=topicHours(m, rows); if(th!=null) auto=el("span",{class:"note "+(need&&th>=need?"ok":""),text:fmtH(th)+(need? " of "+fmtH(need):"")+" in courses with matching titles this cycle"+(need&&th>=need?" ✓":"")}); }
+    return el("li",{}, el("label",{}, el("input",{type:"checkbox",checked:!!lic.done[m],onchange:ev=>{ lic.done[m]=ev.target.checked; saveProfile(); }}), m), auto); }));
+}
+function medCard(lic,idx){
+  const c=medCalc(lic); const r=c?.r; const p=person();
+  if(!r) return el("div",{class:"lic"}, (S.reqMd? "No physician rules on file for "+lic.state : "Loading physician CME rules…"));
+  const kindTxt=(r.kind==="do"? (r.hasDoRule? "Osteopathic license (DO)" : "Physician license (DO)") : "Physician license (MD)");
+  const head=el("div",{class:"lichead"}, el("h4",{text:r.name}), el("span",{class:"tag",text:kindTxt}));
+  const box=el("div",{class:"lic"}, head);
+  if(c.noDate){ box.append(el("p",{class:"note",text:"Add a renewal date to see progress."})); }
+  else {
+    const need=c.total, short=Math.max(0,need-c.counted);
+    const cat1Short=r.cat1Min? Math.max(0,r.cat1Min-c.cat1) : 0;
+    const allShort=Math.max(short,cat1Short);
+    const moc=r.mocSubstitutes && (p.cert==="abo"||p.cert==="aoboo");
+    const pillCls= !need? "p-good" : allShort<=0? "p-good" : (allShort-c.planHrs<=0&&c.planHrs>0? "p-warn":"p-bad");
+    const pillTxt= !need? "No hour requirement" : allShort<=0? "Hours complete" : (allShort-c.planHrs<=0&&c.planHrs>0? "On track with planned meetings" : fmtH(allShort)+" still needed");
+    head.append(el("span",{class:"pill "+pillCls,text:pillTxt}),
+      el("span",{class:"note",text:"Renews "+c.end.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})+(c.daysLeft>=0? " · "+c.daysLeft+" days left":" · deadline passed")+" · cycle "+c.start.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})+" – "+c.end.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}));
+    if(need){
+      const bars=el("div",{class:"bars"});
+      const c1Label= c.doStrict? "AOA Category 1-A" : "Category 1 (AMA PRA Cat 1 or AOA 1-A)";
+      if(r.cat1Min!=null && r.cat1Min>=need) bars.append(barEl(c1Label, c.cat1, c.planHrs, need));
+      else { bars.append(barEl("Total CME hours", c.counted, c.planHrs, need)); if(r.cat1Min) bars.append(barEl(c1Label+" minimum", c.cat1, c.planHrs, r.cat1Min)); }
+      box.append(bars);
+    }
+    const facts=[];
+    if(c.doStrict && c.ama1) facts.push("AMA PRA Cat 1: "+fmtH(c.ama1)+" (counts toward the total, not the 1-A minimum)");
+    if(c.rest && !c.doStrict) facts.push("Category 2 / other accredited: "+fmtH(c.rest)+(r.cat1Min!=null&&r.cat1Min>=need? " (not counted — this board wants all Category 1)":""));
+    if(c.cope) facts.push("COPE (optometry) credit: "+fmtH(c.cope)+" — not counted for a medical license");
+    if(c.other) facts.push("Uncategorized: "+fmtH(c.other)+" — set a credit type in your transcript");
+    if(c.planned.length) facts.push("Planned: "+c.planned.length+" favorited CME meeting"+(c.planned.length>1?"s":"")+" in this cycle"+(c.planUnknown?" ("+c.planUnknown+" with credits TBA)":""));
+    if(moc) facts.push("Your board certification may satisfy this state's hour requirement — confirm with the board");
+    if(facts.length) box.append(el("p",{class:"note",text:facts.join(" · ")}));
+    if(r.mandatory?.length) box.append(mandList(lic, r.mandatory, c.rows, false));
+  }
+  box.append(el("p",{class:"note"}, "Rule summary: "+ruleSummary(r.kind, r.code)+(r.notes? " · "+r.notes:"")+" · Confidence: "+(r.confidence||"—")+". Sources: ", ...srcLinks(r.sources)));
+  const renIn=el("input",{class:"inp",type:"date",value:lic.renewal||"","aria-label":"Renewal deadline for "+r.name,onchange:ev=>{ lic.renewal=ev.target.value; saveProfile(); renderAll(); }});
+  const rm=el("button",{class:"btn small danger",type:"button",onclick:ev=>{ const b=ev.currentTarget; if(b.dataset.armed){ S.profile.licenses.splice(idx,1); saveProfile(); renderAll(); } else { b.dataset.armed="1"; b.textContent="Click again to remove"; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.armed; b.textContent="Remove license"; } },3000);} }},"Remove license");
+  box.append(el("div",{class:"formrow"}, el("label",{class:"field"},"Renewal deadline",renIn), rm));
+  return box;
+}
+
+/* board certification and DEA */
+function credHours(rows, types){ return rows.filter(x=>types.includes(rowCredit(x))).reduce((s,x)=>s+(+x.hours||0),0); }
+function chk(obj, key, label, extra){ return el("li",{}, el("label",{}, el("input",{type:"checkbox",checked:!!obj[key],onchange:ev=>{ obj[key]=ev.target.checked; saveProfile(); renderAll(); }}), label), extra||null); }
+function numIn(obj, key, max, label){ return el("label",{class:"field"}, label, el("input",{class:"inp",type:"number",min:"0",max:String(max),step:"1",value:String(obj[key]||0),style:"width:80px",onchange:ev=>{ obj[key]=Math.max(0,Math.min(max,+ev.target.value||0)); saveProfile(); renderAll(); }})); }
+function aboCard(){
+  const p=S.profile.person; const b=p.abo||(p.abo={}); const now=today(), yr=now.getFullYear();
+  const from=new Date(now); from.setFullYear(yr-2); const rows=S.transcript.rows.filter(x=>x.date>=iso(from));
+  const c1=credHours(rows,["ama1","ama1sa"]), sa=credHours(rows,["ama1sa"]);
+  const box=el("div",{class:"lic"}, el("div",{class:"lichead"}, el("h4",{text:"ABO Continuing Certification"}), el("span",{class:"tag",text:"10-year cycle"})));
+  const exp=+b.expires||0;
+  box.append(el("div",{class:"formrow"}, el("label",{class:"field"},"Certificate expires (year)", el("input",{class:"inp",type:"number",min:"2026",max:"2040",value:exp?String(exp):"",placeholder:"e.g. 2033",style:"width:110px",onchange:ev=>{ b.expires=+ev.target.value||null; saveProfile(); renderAll(); }})),
+    exp? el("span",{class:"note",text:(exp-yr>=0? (exp-yr)+" year"+(exp-yr===1?"":"s")+" left in this cycle" : "Certificate year has passed")}) : null));
+  box.append(el("div",{class:"bars"}, barEl("AMA PRA Category 1, last 24 months", c1, 0, 50), barEl("Self-assessment credits, last 24 months", sa, 0, 16)));
+  box.append(el("p",{class:"note",text:"ABO asks for an average of 50 Category 1 credits every 2 years (250 per cycle), 16 of them self-assessment, and at least 80% ophthalmology-specific. Mark self-assessment courses as \"AMA PRA Cat 1 · self-assessment\" in your transcript. Completing a year of Quarterly Questions earns 8 self-assessment credits."}));
+  b.qq=b.qq||{}; b.fee=b.fee||{};
+  box.append(el("ul",{class:"mand"},
+    chk(b.qq, String(yr), yr+" Quarterly Questions complete (40 knowledge questions + 5 articles; self-paced)"),
+    chk(b.fee, String(yr), yr+" annual fee paid ($225, billed Jan 1)"),
+    chk(b, "attested", "CME attested on abop.org within the last 2 years (credits are not sent to ABO automatically)"),
+    chk(b, "patientSafety", "Patient safety activity done this cycle (1 required; the DEA 8-hour MATE training counts)", p.mateDone&&!b.patientSafety? el("span",{class:"note",text:"Your MATE training can be used for this — attest it on abop.org."}):null)));
+  box.append(el("div",{class:"formrow"}, numIn(b,"qqPasses",5,"Quarterly Questions years passed this cycle (5 needed)"), numIn(b,"imp",2,"Improvement in Medical Practice activities (2 needed)")));
+  const prog=[(b.qqPasses||0)+"/5 Quarterly Questions years",(b.imp||0)+"/2 practice improvement",b.patientSafety?"patient safety ✓":"patient safety pending"];
+  box.append(el("p",{class:"note"}, "Cycle progress: "+prog.join(" · ")+". Details: ", el("a",{href:"https://abop.org/maintain-certification",target:"_blank",rel:"noopener",text:"abop.org"})));
+  return box;
+}
+function aobooCard(){
+  const p=S.profile.person; const b=p.aoboo||(p.aoboo={}); const yr=today().getFullYear();
+  const rows=S.transcript.rows.filter(x=>x.date>="2025-01-01" && x.date<="2027-12-31");
+  const all=credHours(rows,["ama1","ama1sa","aoa1a","aoa1b","aoa2","ama2"]);
+  const box=el("div",{class:"lic"}, el("div",{class:"lichead"}, el("h4",{text:"AOBOO-HNS Osteopathic Continuous Certification"}), el("span",{class:"tag",text:"AOA cycle 2025–2027"})));
+  box.append(el("div",{class:"bars"}, barEl("CME credits, Jan 2025 – Dec 2027", all, 0, 60)));
+  box.append(el("p",{class:"note",text:"60 credits this cycle, including 25 ophthalmology-specific (120 if your certificate is non-time-limited and you don't participate in OCC). AOA-accredited sponsors report AOA Category 1 credit for you; AMA PRA Category 1 is self-reported to AOA."}));
+  b.la=b.la||{}; b.reg=b.reg||{};
+  box.append(el("ul",{class:"mand"},
+    chk(b.la, String(yr), yr+" longitudinal assessment passed (30 questions, open mid-January to Oct 31, 70% to pass)"),
+    chk(b.reg, String(yr+1), (yr+1)+" assessment registration done ($200; registration runs Jun 1 – Oct 31)"),
+    chk(b, "qi", "Practice improvement (QI) attestation done this 3-year cycle")));
+  box.append(el("p",{class:"note"}, "Details: ", el("a",{href:"https://osteopathic.org/cme/cme-guide",target:"_blank",rel:"noopener",text:"osteopathic.org"})));
+  return box;
+}
+function mateCard(){
+  const p=S.profile.person; const h=S.transcript.rows.filter(x=>MATE_RX.test(x.title||"")).reduce((s,x)=>s+(+x.hours||0),0);
+  const box=el("div",{class:"lic"}, el("div",{class:"lichead"}, el("h4",{text:"DEA registration — MATE Act training"}), el("span",{class:"pill "+(p.mateDone?"p-good":(h>=8?"p-warn":"p-bad")),text:p.mateDone?"Done":(h>=8?"Likely met — confirm":"Not yet")})));
+  box.append(el("ul",{class:"mand"}, chk(p,"mateDone","I've completed the one-time 8 hours on opioid and substance use disorders", el("span",{class:"note",text:fmtH(h)+" of courses with matching titles in your transcript (hours can be spread across courses)"}))));
+  box.append(el("p",{class:"note"}, "Every DEA registrant (MD, DO, or optometrist with a DEA number) attests to this once, on the first DEA registration or renewal after June 27, 2023. Accredited CME and COPE CE can count. ", el("a",{href:"https://www.deadiversion.usdoj.gov/faq/MATE_Act_faq.html",target:"_blank",rel:"noopener",text:"DEA FAQ"})));
+  return box;
+}
+function certPanel(){
+  const p=person(); const cards=[];
+  if(p.cert==="abo") cards.push(aboCard()); if(p.cert==="aoboo") cards.push(aobooCard()); if(p.dea) cards.push(mateCard());
+  if(!cards.length) return null;
+  return el("section",{class:"panel","aria-labelledby":"cert-h"}, el("h3",{id:"cert-h",text:p.cert&&p.cert!=="none"? "Board certification & federal requirements" : "Federal requirements"}), ...cards);
+}
+
+/* signup: occupation → location → renewal date */
+function wizardPanel(){
+  const w=S.wiz||(S.wiz={step:1});
+  const steps=[];
+  const opt=(k,v)=>el("button",{type:"button",class:"wopt",role:"radio","aria-checked":w.profession===k?"true":"false",onclick:()=>{ w.profession=k; if(k==="od") w.cert="none"; else if(!w.cert||w.cert==="none") w.cert=(k==="do"?"aoboo":"abo"); w.state=""; w.step=Math.max(w.step,2); renderAll(); }}, el("b",{text:v.label}), el("span",{class:"note",text:v.board+" · "+v.credit}));
+  const certSel=el("select",{class:"inp",id:"wizCert",onchange:ev=>{ w.cert=ev.target.value; }}, Object.entries(CERT_LABEL).filter(([k])=>k!=="aoboo"||w.profession==="do").map(([k,v])=>el("option",{value:k,text:v,selected:(w.cert||"none")===k})));
+  const dea=el("input",{type:"checkbox",id:"wizDea",checked:!!w.dea,onchange:ev=>{ w.dea=ev.target.checked; renderAll(); }});
+  const mate=el("input",{type:"checkbox",id:"wizMate",checked:!!w.mate,onchange:ev=>{ w.mate=ev.target.checked; }});
+  steps.push(el("div",{class:"wstep"}, el("div",{class:"wnum",text:"1"}), el("div",{class:"wbody"},
+    el("b",{text:"What's your occupation and license type?"}),
+    el("div",{class:"wopts",role:"radiogroup","aria-label":"Occupation and license type"}, ...Object.entries(PROF).map(([k,v])=>opt(k,v))),
+    isPhys(w.profession||null)? el("label",{class:"field"},"Board certification",certSel) : null,
+    w.profession? el("label",{class:"tog"}, dea, " I hold a DEA registration") : null,
+    w.profession&&w.dea? el("label",{class:"tog"}, mate, " I've already completed the one-time 8-hour MATE Act training") : null)));
+  if(w.edit){
+    steps.push(el("div",{class:"actions"},
+      el("button",{class:"btn primary",type:"button",disabled:!w.profession,onclick:()=>{ const old=S.profile.person||{}; S.profile.person={...old, profession:w.profession, cert:w.cert||"none", dea:!!w.dea, mateDone:!!w.mate}; S.wiz=null; saveProfile(); renderAll(); toast("Profile saved"); }},"Save profile"),
+      el("button",{class:"btn ghost",type:"button",onclick:()=>{ S.wiz=null; renderAll(); }},"Cancel")));
+    return el("section",{class:"panel wizard","aria-labelledby":"wiz-h"}, el("h3",{id:"wiz-h",text:"Update your profile"}), el("p",{class:"note",text:"Your occupation decides which state rules and credit types new licenses use, and which meetings the listings show first."}), ...steps);
+  }
+  const off=n=>w.step<n;
+  const kind=w.profession||"od";
+  const opts=ruleStates(kind).sort((a,b)=>a.name.localeCompare(b.name));
+  const stSel=el("select",{class:"inp",id:"wizState",disabled:off(2),onchange:ev=>{ w.state=ev.target.value; if(w.state) w.step=Math.max(w.step,3); renderAll(); }}, el("option",{value:"",text:opts.length? "Choose a state" : "Loading state rules…"}), opts.map(s=>el("option",{value:s.code,text:s.name,selected:w.state===s.code})));
+  steps.push(el("div",{class:"wstep"+(off(2)?" off":"")}, el("div",{class:"wnum",text:"2"}), el("div",{class:"wbody"},
+    el("b",{text:"Where are you licensed?"}), el("label",{class:"field"},"State of your license",stSel),
+    w.state? el("p",{class:"note",text:ruleSummary(kind,w.state)}) : el("p",{class:"note",text:"Start with one license. You can add other states afterward."}))));
+  const ren=el("input",{class:"inp",type:"date",id:"wizRenewal",disabled:off(3),value:w.renewal||"",onchange:ev=>{ w.renewal=ev.target.value; }});
+  const carry=el("input",{class:"inp",type:"number",id:"wizCarry",min:"0",step:"0.5",value:String(w.carry||0),disabled:off(3),style:"width:90px",onchange:ev=>{ w.carry=+ev.target.value||0; }});
+  steps.push(el("div",{class:"wstep"+(off(3)?" off":"")}, el("div",{class:"wnum",text:"3"}), el("div",{class:"wbody"},
+    el("b",{text:"When is your next renewal?"}),
+    el("div",{class:"formrow"}, el("label",{class:"field"},"Renewal deadline",ren), kind==="od"? el("label",{class:"field"},"Carry-over hrs",carry) : null),
+    el("div",{class:"actions"}, el("button",{class:"btn primary",type:"button",id:"wizGo",disabled:off(3),onclick:()=>{
+      const rn=ren.value; if(!w.profession||!w.state){ toast("Choose your occupation and state"); return; } if(!rn){ toast("Enter your next renewal deadline"); return; }
+      S.profile.person={...(S.profile.person||{}), profession:w.profession, cert:w.cert||"none", dea:!!w.dea, mateDone:!!w.mate};
+      S.profile.licenses.push({state:w.state, renewal:rn, carryover:kind==="od"?(+carry.value||0):0, done:{}, kind});
+      S.wiz=null; S.credTouched=false; saveProfile(); renderAll(); toast("You're set up — add more licenses below"); }},"Start tracking")))));
+  return el("section",{class:"panel wizard","aria-labelledby":"wiz-h"}, el("h3",{id:"wiz-h",text:"Set up your CE tracker"}),
+    el("p",{class:"note",text:"Three quick steps. Your answers decide which state rules and credit types the tracker uses."}), ...steps);
+}
+function profilePanel(){
+  const p=person(), prof=profession();
+  const bits=[PROF[prof]?.label, p.cert&&p.cert!=="none"? CERT_LABEL[p.cert].replace(/ diplomate$/," diplomate") : null, p.dea? "DEA registrant" : null].filter(Boolean);
+  return el("section",{class:"panel profile"}, el("div",{class:"lichead"}, el("h3",{text:"Your profile"}), el("span",{class:"note",text:bits.join(" · ")}),
+    el("button",{class:"btn small ghost",type:"button",onclick:()=>{ S.wiz={edit:true, step:1, profession:prof, cert:p.cert||"none", dea:!!p.dea, mate:!!p.mateDone}; renderAll(); }},"Edit")));
+}
+function syncCreditDefault(){ if(S.credTouched) return; const want=isPhys()? "ama1" : ""; if(S.f.credit!==want){ S.f.credit=want; const s=document.getElementById("credit"); if(s) s.value=want; } }
+
+const MAND_COPE=[[/glaucoma/i,["GL"]],[/jurisprud|ethics|laws? (&|and) rules|oregon law|professional responsibility/i,["EJ"]],[/public health/i,["PB"]],[/injection/i,["IS"]]];
+const THER_CODES=new Set(["AS","PS","SD","GL","NO","PH","TA","TP","TG","TO","PO","RS","TMOD","OD"]);
+const THER_RX=/glaucom|pharm|therap|disease|retin|macul|uveit|dry eye|ocular surface|cornea|kerat|diabet|treat|manag(e|ing) .*(ocular|eye)|tmod|inject|laser|slt|yag|neuro|systemic|infect|inflamm|oral|antibiot|steroid|amd|ocular emerg|posterior|anterior seg/i;
+const PM_RX=/practice management|coding|billing|business|marketing|staff|revenue|reimburse/i;
+const EJ_RX=/ethic|jurisprud|law|legal|regulat/i;
+function guessBucket(cat,title,code){ if(code&&COPE_CATS[code]) return COPE_CATS[code][2]; const c=String(cat||"").toUpperCase().trim(); if(c==="PM"||PM_RX.test(title)) return "pm"; if(c==="EJ"||EJ_RX.test(title)) return "ej"; if(THER_CODES.has(c)||THER_RX.test(title)||THER_RX.test(cat||"")) return "ther"; return "general"; }
+function guessFormat(txt){ const s=String(txt||""); if(/self|home study|asynch|journal|correspond|recorded|on.?demand|enduring|internet|online course|print/i.test(s)) return "self"; if(/webinar|virtual|live.?online|interactive online|synchron|zoom|live.?stream|remote/i.test(s)) return "live-online"; if(/live|in.?person|lecture|workshop|conference|seminar|lab|classroom|meeting/i.test(s)) return "in-person"; return "self"; }
+const FMT_LABEL={"in-person":"Live, in person","live-online":"Live, online (interactive)","self":"Self-study"};
+const BUCKET_LABEL={ther:"Therapeutic / ocular disease",pm:"Practice management",ej:"Ethics / jurisprudence",general:"General optometry"};
+
+function licenseCalc(lic){
+  const r=S.req?.states?.[lic.state]; if(!r) return null;
+  const end=pd(lic.renewal); if(!end) return {r, noDate:true};
+  const start=new Date(end); start.setFullYear(start.getFullYear()-(r.cycleYears||1)); start.setDate(start.getDate()+1);
+  const sIso=iso(start), eIso=iso(end);
+  const rows=S.transcript.rows.filter(x=>x.date>=sIso && x.date<=eIso);
+  let inPerson=0, liveOnline=0, self=0, ther=0, pm=0, ej=0;
+  for(const x of rows){ const h=+x.hours||0; if(x.format==="in-person") inPerson+=h; else if(x.format==="live-online") liveOnline+=h; else self+=h; if(x.bucket==="ther") ther+=h; if(x.bucket==="pm") pm+=h; if(x.bucket==="ej") ej+=h; }
+  let live=inPerson+liveOnline, selfAll=self;
+  if(r.inPersonOnly){ live=inPerson; selfAll=self+liveOnline; }
+  const selfCounted=r.selfMax==null? selfAll : Math.min(selfAll, r.selfMax);
+  const pmExcess=r.pmMax==null? 0 : Math.max(0, pm-r.pmMax);
+  const carry=Math.max(0, Math.min(+lic.carryover||0, r.carryMax==null? (+lic.carryover||0) : r.carryMax));
+  const counted=Math.max(0, live+selfCounted-pmExcess)+carry;
+  const t=today();
+  const planned=S.events.filter(e=>isFav(e.id) && e.start && e.start>=sIso && e.start<=eIso && pd(e.start)>=t);
+  const planHrs=planned.reduce((s,e)=>s+(e.copeHours||0),0), planUnknown=planned.filter(e=>!e.copeHours).length;
+  return {r, start, end, rows, live, inPerson, liveOnline, selfAll, selfCounted, pm, pmExcess, ther, ej, carry, counted, planned, planHrs, planUnknown, daysLeft:daysBetween(t,end)};
+}
+function barEl(label, have, plan, need){
+  const pct=need? Math.min(100, have/need*100) : 0, ppct=need? Math.min(100-pct, plan/need*100) : 0;
+  const done=have>=need;
+  return el("div",{class:"bar"},
+    el("div",{class:"lbl"}, el("span",{text:label}), el("span",{text: fmtH(have)+" / "+fmtH(need)+(plan>0&&!done? "  (+"+fmtH(plan)+" planned)":"")})),
+    el("div",{class:"track",role:"img","aria-label":label+": "+fmtH(have)+" of "+fmtH(need)+" hours"}, el("div",{class:"fill"+(done?" done":""),style:"width:"+pct+"%"}), el("div",{class:"fill plan",style:"width:"+ppct+"%"})));
+}
+function fmtH(n){ n=Math.round(n*10)/10; return (Number.isInteger(n)? n : n.toFixed(1))+" h"; }
+
+function renderTracker(){
+  const box=$("#view-tracker");
+  const parts=[];
+  if(S.personalMode==="local" && sb) parts.push(el("div",{class:"lic"}, el("b",{text:"Tracking without an account"}), el("p",{class:"note",text:"Everything you enter here stays in this browser. Sign in with your email to keep your licenses and transcript private to your account and available on any device."}), el("div",{class:"actions"}, el("button",{class:"btn primary",type:"button",onclick:openSignIn},"Sign in with email"))));
+  const needSetup=!S.profile.person?.profession && !S.profile.licenses.length;
+  if(needSetup || S.wiz){ parts.push(wizardPanel()); if(needSetup){ box.replaceChildren(...parts); return; } }
+  else parts.push(profilePanel());
+  const states=S.req?.states||{};
+  // licenses
+  const lp=el("section",{class:"panel","aria-labelledby":"lic-h"}, el("h3",{id:"lic-h",text:"My state licenses"}),
+    el("p",{class:"note",text:"Add each license you hold. Progress uses your uploaded transcript for the current renewal cycle, plus your favorited 2027 meetings as planned hours."+(S.personalMode==="local"?" Saved in this browser only.":" Saved privately to your account — no one else can see it.")}));
+  const kindSel=el("select",{class:"inp",id:"licKind"}, Object.entries(PROF).map(([k,v])=>el("option",{value:k,text:v.label,selected:k===(profession()||"od")})));
+  const stSel=el("select",{class:"inp",id:"licState"});
+  const fillStates=()=>{ const ks=ruleStates(kindSel.value).sort((a,b)=>a.name.localeCompare(b.name)); stSel.replaceChildren(el("option",{value:"",text:"Choose a state"}), ...ks.map(s=>el("option",{value:s.code,text:s.name}))); carryWrap.hidden=kindSel.value!=="od"; };
+  const renIn=el("input",{class:"inp",type:"date",id:"licRenewal"});
+  const carryIn=el("input",{class:"inp",type:"number",id:"licCarry",min:"0",step:"0.5",value:"0",style:"width:90px"});
+  const carryWrap=el("label",{class:"field"},"Carry-over hrs",carryIn);
+  kindSel.addEventListener("change",fillStates); fillStates();
+  const addBtn=el("button",{class:"btn primary",type:"button",onclick:()=>{
+    const st=stSel.value, rn=renIn.value, kind=kindSel.value; if(!st){ toast("Choose a state"); return; } if(!rn){ toast("Enter your next renewal deadline"); return; }
+    if(S.profile.licenses.some(l=>l.state===st && licKind(l)===kind)){ toast("You're already tracking that license"); return; }
+    S.profile.licenses.push({state:st, renewal:rn, carryover:kind==="od"?(+carryIn.value||0):0, done:{}, kind}); saveProfile(); renderAll(); }},"Add license");
+  lp.append(el("div",{class:"formrow"}, el("label",{class:"field"},"License type",kindSel), el("label",{class:"field"},"State",stSel), el("label",{class:"field"},"Next renewal deadline",renIn), carryWrap, addBtn));
+  if(!Object.keys(states).length) lp.append(el("p",{class:"note",text:"Loading state requirements…"}));
+  if(!S.profile.licenses.length) lp.append(el("div",{class:"empty"}, el("b",{text:"No licenses yet"}), "Add a license above — for example Virginia, renewing March 31, 2027."));
+  S.profile.licenses.forEach((lic,idx)=>lp.append(licKind(lic)==="od"? licCard(lic,idx) : medCard(lic,idx)));
+  parts.push(lp);
+  { const cp=certPanel(); if(cp) parts.push(cp); }
+  parts.push(transcriptPanel());
+  parts.push(homePanel());
+  if(S.personalMode==="account") parts.push(el("section",{class:"panel"}, el("h3",{text:"Your account"}), el("p",{class:"note",text:"Signed in as "+S.email+". Your licenses, transcript and favorites are stored in your account and visible only to you."}),
+    el("div",{class:"actions"}, el("button",{class:"btn small danger",type:"button",onclick:async ev=>{ const b=ev.currentTarget; if(!b.dataset.armed){ b.dataset.armed="1"; b.textContent="Click again to permanently delete your saved data"; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.armed; b.textContent="Delete my saved data"; } },4000); return; }
+      const {error}=await sb.from("user_data").delete().eq("user_id",S.uid); if(error){ toast("Couldn't delete: "+error.message); return; } S.profile={favorites:[],licenses:[],home:HOME_DEFAULT}; S.transcript={rows:[]}; renderAll(); toast("Your saved data was deleted"); }},"Delete my saved data"))));
+  if(S.reqMd?.disclaimer && S.profile.licenses.some(l=>licKind(l)!=="od")) parts.push(el("p",{class:"note",text:S.reqMd.disclaimer}));
+  if(S.req?.disclaimer) parts.push(el("p",{class:"note"}, S.req.disclaimer+" Sources: ", ...(S.req.sources||[]).flatMap((u,i)=>[i?", ":"", el("a",{href:u,target:"_blank",rel:"noopener",text:new URL(u).hostname})])));
+  box.replaceChildren(...parts);
+}
+function licCard(lic,idx){
+  const c=licenseCalc(lic); const r=c?.r;
+  if(!r) return el("div",{class:"lic"}, "Unknown state "+lic.state);
+  const head=el("div",{class:"lichead"}, el("h4",{text:r.name}));
+  const box=el("div",{class:"lic"}, head);
+  if(c.noDate){ box.append(el("p",{class:"note",text:"Add a renewal date to see progress."})); return box; }
+  const need=r.total, short=Math.max(0,need-c.counted);
+  const pillCls= short<=0? "p-good" : (short-c.planHrs<=0? "p-warn":"p-bad");
+  const pillTxt= short<=0? "Hours complete" : (short-c.planHrs<=0? "On track with planned meetings" : fmtH(short)+" still needed");
+  head.append(el("span",{class:"pill "+pillCls,text:pillTxt}),
+    el("span",{class:"note",text:"Renews "+c.end.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})+(c.daysLeft>=0? " · "+c.daysLeft+" days left":" · deadline passed")+" · cycle "+c.start.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})+" – "+c.end.toLocaleDateString("en-US",{month:"short",day:"numeric",year:"numeric"})}));
+  const bars=el("div",{class:"bars"}, barEl("Total countable hours", c.counted, c.planHrs, need));
+  if(r.liveMin) bars.append(barEl(r.inPersonOnly?"Live, in person":"Live / real-time", c.live, c.planHrs, r.liveMin));
+  if(r.therMin) bars.append(barEl("Therapeutic / ocular disease", c.ther, 0, r.therMin));
+  box.append(bars);
+  const facts=[];
+  facts.push("Self-study: "+fmtH(c.selfAll)+(r.selfMax!=null? " (max "+fmtH(r.selfMax)+" counts"+(c.selfAll>r.selfMax?" — "+fmtH(c.selfAll-r.selfMax)+" over the cap":"")+")" : ""));
+  if(r.pmMax!=null) facts.push("Practice management: "+fmtH(c.pm)+(r.pmMax===0? " (not accepted)" : " (max "+fmtH(r.pmMax)+")"));
+  if(c.carry) facts.push("Carry-over: "+fmtH(c.carry));
+  if(c.planned.length) facts.push("Planned: "+c.planned.length+" favorited meeting"+(c.planned.length>1?"s":"")+" in this cycle"+(c.planUnknown?" ("+c.planUnknown+" with hours TBA)":""));
+  box.append(el("p",{class:"note",text:facts.join(" · ")}));
+  if(r.mandatory?.length) box.append(mandList(lic, r.mandatory, c.rows, true));
+  box.append(el("p",{class:"note",text:"Rule summary: "+r.total+" hrs every "+(r.cycleYears>1? r.cycleYears+" years":"year")+" ("+r.period+")"+(r.liveMin?" · "+r.liveMin+" live min.":"")+(r.therMin?" · "+r.therMin+" therapeutic min.":"")+(r.notes?" · "+r.notes:"")}));
+  const renIn=el("input",{class:"inp",type:"date",value:lic.renewal,"aria-label":"Renewal deadline for "+r.name,onchange:ev=>{ lic.renewal=ev.target.value; saveProfile(); renderAll(); }});
+  const carryIn=el("input",{class:"inp",type:"number",min:"0",step:"0.5",value:String(lic.carryover||0),style:"width:80px","aria-label":"Carry-over hours for "+r.name,onchange:ev=>{ lic.carryover=+ev.target.value||0; saveProfile(); renderAll(); }});
+  const rm=el("button",{class:"btn small danger",type:"button",onclick:ev=>{ const b=ev.currentTarget; if(b.dataset.armed){ S.profile.licenses.splice(idx,1); saveProfile(); renderAll(); } else { b.dataset.armed="1"; b.textContent="Click again to remove"; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.armed; b.textContent="Remove license"; } },3000);} }},"Remove license");
+  box.append(el("div",{class:"formrow"}, el("label",{class:"field"},"Renewal deadline",renIn), el("label",{class:"field"},"Carry-over hrs",carryIn), rm));
+  return box;
+}
+
+/* ---------- transcript ---------- */
+const PDFJS_URL="vendor/pdf.min.js", PDFJS_WORKER="vendor/pdf.worker.min.js";
+let pdfjsP=null;
+function loadPdfjs(){
+  if(window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+  if(!pdfjsP) pdfjsP=new Promise((res,rej)=>{ const s=document.createElement("script"); s.src=PDFJS_URL;
+    s.onload=()=>{ if(window.pdfjsLib){ window.pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS_WORKER; res(window.pdfjsLib); } else { pdfjsP=null; rej(new Error("load")); } };
+    s.onerror=()=>{ pdfjsP=null; rej(new Error("load")); }; document.head.append(s); });
+  return pdfjsP;
+}
+/* Read a PDF into lines of positioned text cells */
+async function pdfLines(buf){
+  const lib=await loadPdfjs(); const doc=await lib.getDocument({data:buf}).promise; const lines=[];
+  for(let n=1;n<=doc.numPages;n++){
+    const tc=await (await doc.getPage(n)).getTextContent();
+    const items=tc.items.filter(i=>i.str&&i.str.trim()).map(i=>({s:i.str,x:i.transform[4],y:i.transform[5],w:i.width||0,h:Math.abs(i.transform[3])||10}));
+    items.sort((a,b)=>b.y-a.y||a.x-b.x);
+    const pl=[]; for(const it of items){ const L=pl.find(l=>Math.abs(l.y-it.y)<Math.max(2.5,it.h*0.35)); if(L) L.items.push(it); else pl.push({y:it.y,items:[it]}); }
+    pl.sort((a,b)=>b.y-a.y);
+    for(const l of pl){ l.items.sort((a,b)=>a.x-b.x); const cells=[];
+      for(const it of l.items){ const c=cells[cells.length-1];
+        const gap=c? it.x-c.x2 : 0;
+        if(c && gap>-0.5 && gap < Math.max(4,it.h*0.6)){ c.s+=(it.x-c.x2>0.8 && !/\s$/.test(c.s) ? " " : "")+it.s; c.x2=Math.max(c.x2,it.x+it.w); }
+        else cells.push({s:it.s,x:it.x,x2:it.x+it.w}); }
+      for(const c of cells) c.s=c.s.replace(/\s+/g," ").trim();
+      const raw=l.items.map(i=>({s:i.s.replace(/\s+/g," "),x:i.x,x2:i.x+i.w})).filter(i=>i.s.trim());
+      lines.push({page:n,y:l.y,cells:cells.filter(c=>c.s),items:raw}); }
+  }
+  return lines;
+}
+const DATE_RX=/\b(\d{4}-\d{1,2}-\d{1,2}|\d{1,2}[\/.-]\d{1,2}[\/.-]\d{2,4}|(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\.? \d{1,2},? \d{4})\b/i;
+const SKIP_RX=/^(page \d|total|printed|generated|report date|run date)|\bpage \d+ of \d+\b/i;
+/* Turn PDF lines into a header + rows table for the column-matching step */
+function pdfTable(lines){
+  const txt=l=>l.cells.map(c=>c.s).join(" ");
+  const isHead=l=>/date/i.test(txt(l))&&/(hour|credit|hrs)/i.test(txt(l))&&l.cells.length>=2;
+  const hi=lines.findIndex(isHead);
+  if(hi>=0){
+    const cols=lines[hi].cells.map(c=>({s:c.s,x:c.x,x2:Math.max(c.x2,c.x+8)}));
+    // column boundaries sit just left of each header's start (between the previous header's end and this one's start)
+    const bounds=cols.map((k,i)=> i===0? -1e9 : k.x-0.25*Math.max(0,k.x-cols[i-1].x2));
+    const colOf=c=>{ const m=(c.x+c.x2)/2; let i=0; while(i+1<cols.length && m>=bounds[i+1]) i++; return i; };
+    // split each text run into words with estimated positions, so a run that crosses columns is divided correctly
+    const words=l=>{ const out=[]; for(const it of l.items){ const len=it.s.length||1, w=it.x2-it.x; let off=0;
+      for(const part of it.s.split(/(\s+)/)){ if(part.trim()) out.push({s:part,x:it.x+w*off/len,x2:it.x+w*(off+part.length)/len}); off+=part.length; } } return out; };
+    const dateCol=cols.findIndex(k=>/date|completed|attended/i.test(k.s)), hrsCol=cols.findIndex(k=>/hour|credit|hrs/i.test(k.s));
+    const data=[]; let cur=null, last=null;
+    for(const l of lines.slice(hi+1)){
+      if(isHead(l)||SKIP_RX.test(txt(l))){ cur=null; continue; }
+      const row=cols.map(()=>"");
+      for(const it of words(l)){ const i=colOf(it); row[i]=row[i]? row[i]+" "+it.s : it.s; }
+      for(let i=0;i<row.length;i++) row[i]=row[i].replace(/\s+/g," ").trim();
+      const hasDate = dateCol>=0? DATE_RX.test(row[dateCol]) : DATE_RX.test(txt(l));
+      if(hasDate){ cur=row; data.push(cur); last=l; continue; }
+      // wrapped text from the row above (same page, close below, no hours of its own)
+      if(cur && last && l.page===last.page && last.y-l.y<28 && !(hrsCol>=0 && row[hrsCol])){
+        row.forEach((v,i)=>{ if(v&&i!==dateCol) cur[i]=cur[i]? cur[i]+" "+v : v; }); last=l; }
+      else cur=null;
+    }
+    return {header:cols.map(k=>k.s), data};
+  }
+  // No header row found: pick the date and hours out of each line
+  const data=[];
+  for(const l of lines){ const t=txt(l); if(SKIP_RX.test(t)) continue; const dm=t.match(DATE_RX); if(!dm) continue;
+    const rest=t.replace(dm[0]," ").split(/\s+/).filter(Boolean); let hours="";
+    for(let i=rest.length-1;i>=0;i--){ if(/^\d{1,2}(\.\d{1,2})?$/.test(rest[i]) && +rest[i]>0 && +rest[i]<=40){ hours=rest[i]; rest.splice(i,1); if(/^(hours?|hrs?\.?|credits?)$/i.test(rest[i]||"")) rest.splice(i,1); break; } }
+    if(!hours) continue;
+    const title=rest.join(" ").trim();
+    data.push([dm[0],hours,title]); }
+  return {header:["Date","Hours","Course"], data};
+}
+function parseDateLoose(s){
+  s=String(s||"").trim(); if(!s) return null; let m;
+  if((m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/))) return iso(new Date(+m[1],+m[2]-1,+m[3]));
+  if((m=s.match(/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2,4})/))){ let y=+m[3]; if(y<100) y+=2000; return iso(new Date(y,+m[1]-1,+m[2])); }
+  const d=new Date(s); return isNaN(d)? null : iso(new Date(d.getFullYear(),d.getMonth(),d.getDate()));
+}
+const MAPF=[["date","Completion date",/date|completed|attended|taken/i],["hours","Credit hours",/^(?!.*(type|categ)).*(hour|credit|ce\b|hrs)/i],["title","Course title",/title|course name|course$|activity|description|name/i],["credit","Credit type",/credit.?type|type of credit|credit categ|ama|aoa|designation/i],["category","COPE category",/categ|cat\b|subject|topic/i],["format","Format / delivery",/format|type|delivery|method|mode|live|venue/i],["provider","Provider",/provider|sponsor|organi[sz]|admin/i],["courseId","Course ID",/cope|course.?id|id$|number|#/i]];
+function autoMap(header){ const used=new Set(), map={}; for(const [k,,rx] of MAPF){ const i=header.findIndex((h,ix)=>!used.has(ix)&&rx.test(h)); if(i>=0){ map[k]=i; used.add(i);} else map[k]=-1; } return map; }
+async function startImport(file){
+  if(!/\.pdf$/i.test(file.name) && file.type!=="application/pdf"){ toast("Choose a PDF file"); return; }
+  S.importBusy=true; renderAll();
+  try{
+    const lines=await pdfLines(await file.arrayBuffer());
+    if(!lines.length){ toast("That PDF has no readable text. It may be a scanned image; add courses by hand instead."); return; }
+    const {header,data}=pdfTable(lines);
+    if(!data.length){ toast("No course rows with a date and hours were found in that PDF"); return; }
+    S.pendingImport={name:file.name, header, data, map:autoMap(header)};
+    setTimeout(()=>document.getElementById("mapPanel")?.scrollIntoView({behavior:"smooth",block:"start"}),50);
+  }catch(err){ console.warn(err); toast(err&&err.message==="load"? "The PDF reader couldn't load. Check your connection and try again." : "That PDF couldn't be read"); }
+  finally{ S.importBusy=false; renderAll(); }
+}
+function buildImportRows(){
+  const p=S.pendingImport, m=p.map, out=[];
+  for(const r of p.data){
+    const g=k=> m[k]>=0? (r[m[k]]||"").trim() : "";
+    const date=parseDateLoose(g("date")), hours=parseFloat(String(g("hours")).replace(/[^\d.]/g,""));
+    if(!date||!(hours>0)) continue;
+    const title=g("title")||"(untitled course)", cat=g("category");
+    const cp=copeFrom(g("courseId"))||copeFrom(cat)||copeFrom(r.join(" "),true);
+    const code=cp?.code||copeCodeFromCat(cat)||null;
+    out.push({id:"r"+Math.random().toString(36).slice(2,10), date, hours, title, provider:g("provider"), courseId:g("courseId")||cp?.id||"", category:cat, copeCode:code||"", credit:guessCredit(g("credit")+" "+cat+" "+r.join(" "), code, profession()), format:guessFormat(g("format")+" "+title), bucket:guessBucket(cat,title,code)});
+  }
+  return out;
+}
+function transcriptPanel(){
+  const phys=isPhys();
+  const intro= phys
+    ? "Upload your CME transcript as a PDF — for example the AAO CME transcript or an ACCME CME Passport transcript (choose Print, then \"Save as PDF\"). Columns are matched automatically and you can adjust them before importing. Credit type (AMA PRA Category 1 or 2, AOA 1-A, COPE) is read from each row when it's listed; check it below, since only physician credit counts toward a medical license."
+    : "Upload your OE TRACKER transcript as a PDF. In OE TRACKER, open your transcript, choose Print, and pick \"Save as PDF\" as the printer. Columns are matched automatically and you can adjust them before importing. Topic comes from each course's COPE ID (the letters after the dash, such as GL for glaucoma); courses without one are guessed from the title. Format can't be read from a COPE ID, so it is guessed from the transcript — review both below, since they decide what counts toward live and therapeutic minimums.";
+  const p=el("section",{class:"panel","aria-labelledby":"tr-h"}, el("h3",{id:"tr-h",text:phys? "CME transcript" : "CE transcript"}), el("p",{class:"note",text:intro}));
+  const file=el("input",{type:"file",accept:".pdf,application/pdf",id:"pdfFile",hidden:true,onchange:ev=>{ const f=ev.target.files[0]; ev.target.value=""; if(f) startImport(f); }});
+  const drop=el("div",{class:"drop",ondragover:ev=>{ev.preventDefault(); drop.classList.add("over");},ondragleave:()=>drop.classList.remove("over"),ondrop:ev=>{ ev.preventDefault(); drop.classList.remove("over"); const f=ev.dataTransfer.files[0]; if(f) startImport(f); }},
+    el("b",{text:S.importBusy? "Reading PDF…" : "Drop a transcript PDF here"}), el("button",{class:"btn",type:"button",disabled:!!S.importBusy,onclick:()=>file.click()},"Choose PDF file"), file,
+    el("span",{class:"note",text:"The file is read in your browser. Only the course rows you import are saved."}));
+  p.append(drop);
+  if(S.pendingImport) p.append(mapPanel());
+  // manual add
+  const d=el("input",{class:"inp",type:"date",id:"mDate"}), h=el("input",{class:"inp",type:"number",id:"mHours",min:"0.25",step:"0.25",style:"width:80px"}), t=el("input",{class:"inp",type:"text",id:"mTitle",placeholder:"Course title",style:"min-width:200px"});
+  const fm=el("select",{class:"inp",id:"mFmt"}, Object.entries(FMT_LABEL).map(([k,v])=>el("option",{value:k,text:v})));
+  const bk=el("select",{class:"inp",id:"mBucket"}, Object.entries(BUCKET_LABEL).map(([k,v])=>el("option",{value:k,text:v})));
+  const cr=el("select",{class:"inp",id:"mCredit"}, Object.entries(CREDIT_LABEL).map(([k,v])=>el("option",{value:k,text:v,selected:k===(phys?"ama1":"cope")})));
+  const cpHint=el("span",{class:"note",id:"mCopeHint"});
+  const cpIn=el("input",{class:"inp",type:"text",id:"mCope",placeholder:"e.g. 99994-GL",style:"width:120px",oninput:()=>{ const c=copeFrom(cpIn.value); cpHint.textContent=c? COPE_CATS[c.code][0] : (cpIn.value.trim()? "Not a recognized COPE ID" : ""); if(c){ bk.value=COPE_CATS[c.code][2]; cr.value="cope"; } }});
+  const addBtn=el("button",{class:"btn",type:"button",onclick:()=>{ if(!d.value||!(+h.value>0)){ toast("Enter a date and hours"); return; } const cpv=phys? null : copeFrom(cpIn.value);
+    S.transcript.rows.push({id:"m"+Date.now().toString(36), date:d.value, hours:+h.value, title:t.value||"(untitled course)", provider:"", courseId:phys? "" : (cpv?.id||cpIn.value.trim()), category:"", copeCode:cpv?.code||"", credit:phys? cr.value : (cpv? "cope" : "cope"), format:fm.value, bucket:phys? guessBucket("",t.value,null) : bk.value}); saveTranscript(); renderAll(); }},"Add course");
+  if(phys) p.append(el("div",{class:"formrow"}, el("label",{class:"field"},"Date",d), el("label",{class:"field"},"Credits",h), el("label",{class:"field",style:"flex:1 1 200px"},"Activity",t), el("label",{class:"field"},"Credit type",cr), el("label",{class:"field"},"Format",fm), addBtn));
+  else p.append(el("div",{class:"formrow"}, el("label",{class:"field"},"Date",d), el("label",{class:"field"},"Hours",h), el("label",{class:"field",style:"flex:1 1 200px"},"Course",t), el("label",{class:"field"},"COPE ID",cpIn,cpHint), el("label",{class:"field"},"Format",fm), el("label",{class:"field"},"Topic",bk), addBtn));
+  const rows=S.transcript.rows.slice().sort((a,b)=>b.date.localeCompare(a.date));
+  const total=rows.reduce((s,r)=>s+(+r.hours||0),0);
+  if(rows.length){
+    p.append(el("p",{class:"note",text:rows.length+(phys?" activities · ":" courses · ")+fmtH(total)+" total"}));
+    if(phys){
+      const byCr={}; for(const r of rows){ const k=rowCredit(r); byCr[k]=(byCr[k]||0)+(+r.hours||0); }
+      p.append(el("div",{class:"copesum"}, el("span",{class:"note",text:"Hours by credit type:"}), Object.entries(byCr).sort((a,b)=>b[1]-a[1]).map(([k,v])=>el("span",{class:"copechip",text:CREDIT_LABEL[k]+" · "+fmtH(v)}))));
+    } else {
+      const byCat={}; for(const r of rows){ const k=rowCope(r)||"none"; byCat[k]=(byCat[k]||0)+(+r.hours||0); }
+      p.append(el("div",{class:"copesum"}, el("span",{class:"note",text:"Hours by COPE category:"}), Object.entries(byCat).sort((a,b)=>b[1]-a[1]).map(([k,v])=>el("span",{class:"copechip",title:k==="none"?"No COPE ID found for these courses":COPE_CATS[k][0]+" ("+COPE_CATS[k][1]+")",text:(k==="none"?"No COPE ID":k+" "+COPE_CATS[k][0])+" · "+fmtH(v)}))));
+    }
+    const fmtSel=r=>el("select",{"aria-label":"Format",onchange:ev=>{ r.format=ev.target.value; saveTranscript(); renderAll(); }}, Object.entries(FMT_LABEL).map(([k,v])=>el("option",{value:k,text:v,selected:r.format===k})));
+    const delBtn=r=>el("button",{class:"btn small ghost",type:"button","aria-label":"Delete "+r.title,onclick:()=>{ S.transcript.rows=S.transcript.rows.filter(x=>x.id!==r.id); saveTranscript(); renderAll(); }},"Delete");
+    const tb=el("tbody",{}, rows.map(r=>el("tr",{},
+      el("td",{class:"mono",text:r.date}), el("td",{}, el("div",{text:r.title}), r.provider||r.courseId? el("div",{class:"note",text:[r.provider,r.courseId].filter(Boolean).join(" · ")}):null),
+      el("td",{class:"num",text:fmtH(+r.hours)}),
+      phys? el("td",{}, el("select",{"aria-label":"Credit type",onchange:ev=>{ r.credit=ev.target.value; saveTranscript(); renderAll(); }}, Object.entries(CREDIT_LABEL).map(([k,v])=>el("option",{value:k,text:v,selected:rowCredit(r)===k}))))
+          : el("td",{}, (()=>{ const k=rowCope(r); return k? el("span",{title:COPE_CATS[k][1],text:copeLabel(k)}) : el("span",{class:"note",text:r.category||"—"}); })()),
+      el("td",{}, fmtSel(r)),
+      phys? null : el("td",{}, el("select",{"aria-label":"Topic",onchange:ev=>{ r.bucket=ev.target.value; saveTranscript(); renderAll(); }}, Object.entries(BUCKET_LABEL).map(([k,v])=>el("option",{value:k,text:v,selected:r.bucket===k})))),
+      el("td",{}, delBtn(r)))));
+    const heads= phys? ["Date","Activity","Credits","Credit type","Format",""] : ["Date","Course","Hours","COPE category","Format","Topic",""];
+    p.append(el("div",{class:"tablewrap"}, el("table",{}, el("thead",{}, el("tr",{}, heads.map(x=>el("th",{text:x})))), tb)));
+    const acts=el("div",{class:"actions"});
+    if(S.downloads) acts.append(el("button",{class:"btn small",type:"button",onclick:()=>{ const head=["Date","Hours","Title","Provider","Course ID","Credit type","COPE category","Format","Topic"]; saveFile("ce-transcript.csv",[head,...rows.map(r=>[r.date,r.hours,r.title,r.provider,r.courseId,CREDIT_LABEL[rowCredit(r)],copeLabel(rowCope(r))||r.category,FMT_LABEL[r.format],BUCKET_LABEL[r.bucket]])].map(x=>x.map(csvCell).join(",")).join("\n")); }},"Download transcript (CSV)"));
+    acts.append(el("button",{class:"btn small danger",type:"button",onclick:ev=>{ const b=ev.currentTarget; if(b.dataset.armed){ S.transcript.rows=[]; saveTranscript(); renderAll(); } else { b.dataset.armed="1"; b.textContent="Click again to clear all"; setTimeout(()=>{ if(b.isConnected){ delete b.dataset.armed; b.textContent="Clear transcript"; } },3000);} }},"Clear transcript"));
+    p.append(acts);
+  } else p.append(el("p",{class:"note",text:phys? "No activities yet. Upload a CME transcript PDF or add an activity by hand." : "No courses yet. Upload a transcript PDF or add a course by hand."}));
+  return p;
+}
+function mapPanel(){
+  const pi=S.pendingImport;
+  const box=el("div",{class:"lic",id:"mapPanel"}, el("b",{text:"Match columns in "+pi.name}));
+  const grid=el("div",{class:"mapgrid"});
+  for(const [k,label] of MAPF){ grid.append(el("label",{class:"field"}, label, el("select",{class:"inp",onchange:ev=>{ pi.map[k]=+ev.target.value; renderAll(); }}, el("option",{value:"-1",text:"— not in file —"}), pi.header.map((h,i)=>el("option",{value:String(i),text:h||"Column "+(i+1),selected:pi.map[k]===i}))))); }
+  box.append(grid);
+  const rows=buildImportRows();
+  box.append(el("p",{class:"note",text:rows.length+" of "+pi.data.length+" rows found in the PDF have a readable date and hours."+(rows.length? " First: "+rows[0].date+" · "+rows[0].hours+" h · "+rows[0].title : "")}));
+  box.append(el("div",{class:"actions"},
+    el("button",{class:"btn primary",type:"button",disabled:!rows.length,onclick:()=>{
+      const key=r=>r.date+"|"+(r.courseId||r.title).toLowerCase()+"|"+r.hours; const seen=new Set(S.transcript.rows.map(key)); let added=0;
+      for(const r of rows){ if(!seen.has(key(r))){ S.transcript.rows.push(r); seen.add(key(r)); added++; } }
+      S.pendingImport=null; saveTranscript(); renderAll(); toast("Imported "+added+" course"+(added===1?"":"s")+(rows.length-added? " ("+(rows.length-added)+" duplicates skipped)":"")); }},"Import "+rows.length+" courses"),
+    el("button",{class:"btn ghost",type:"button",onclick:()=>{ S.pendingImport=null; renderAll(); }},"Cancel")));
+  return box;
+}
+function homePanel(){
+  const h=S.profile.home||HOME_DEFAULT;
+  const hh=h||{name:"",lat:"",lon:""};
+  const n=el("input",{class:"inp",type:"text",value:hh.name,id:"homeName",placeholder:"e.g. My office"}), la=el("input",{class:"inp",type:"number",step:"0.0001",value:String(hh.lat),id:"homeLat",style:"width:110px",placeholder:"36.8682"}), lo=el("input",{class:"inp",type:"number",step:"0.0001",value:String(hh.lon),id:"homeLon",style:"width:120px",placeholder:"-82.7760"});
+  return el("section",{class:"panel"}, el("h3",{text:"Home base for distances"}),
+    el("p",{class:"note",text:"Distances are straight-line miles from this point. Enter the latitude and longitude of your office or home (right-click a spot in Google Maps to copy them)."}),
+    el("div",{class:"formrow"}, el("label",{class:"field"},"Name",n), el("label",{class:"field"},"Latitude",la), el("label",{class:"field"},"Longitude",lo),
+      el("button",{class:"btn",type:"button",onclick:()=>{ const lat=parseFloat(la.value), lon=parseFloat(lo.value); if(!(lat>=-90&&lat<=90&&lon>=-180&&lon<=180)){ toast("Latitude or longitude is out of range"); return; } S.profile.home={name:n.value||"Home",lat,lon}; saveProfile(); renderAll(); toast("Home base saved"); }},"Save"),
+      el("button",{class:"btn ghost",type:"button",onclick:()=>{ S.profile.home=HOME_DEFAULT; saveProfile(); renderAll(); }},"Clear")));
+}
+
+/* ---------- mission trips ---------- */
+const MROLES=["Optometrists","Students","Opticians","Techs & assistants","Ophthalmologists","Nurses","Non-medical volunteers"];
+const SUPPORT_TYPES=new Set(["Network / directory","Supplies & glasses","Funding support","Fundraising"]);
+/* Organization families: chapters and affiliates of one parent group filter together */
+function mOrg(x){
+  const o=String(x.org||"").trim();
+  if(/^VOSH\b|Volunteer Optometric Services to Humanity/i.test(o)) return "VOSH International (incl. chapters)";
+  if(/Special Olympics/i.test(o)) return "Special Olympics Opening Eyes";
+  if(/^Lions\b/i.test(o)) return "Lions Clubs";
+  if(/Essilor|OneSight/i.test(o)) return "OneSight EssilorLuxottica Foundation";
+  if(/CMDA|Christian Medical & Dental/i.test(o)) return "Christian Medical & Dental Associations (CMDA)";
+  return o.replace(/\s*\(.*?\)\s*$/,"")||"Other";
+}
+function mPasses(x){
+  const f=S.mf;
+  if(f.org && mOrg(x)!==f.org) return false;
+  if(f.scope==="domestic" && x.scope==="international") return false;
+  if(f.scope==="international" && x.scope==="domestic") return false;
+  if(f.role && !(x.roles||[]).includes(f.role)) return false;
+  if(f.faith==="faith" && !x.faith) return false;
+  if(f.faith==="secular" && x.faith) return false;
+  if(f.nearby && !x.nearby) return false;
+  if(f.chapters==="hide" && /^m-vosh-/.test(x.id) && /chapter/.test(x.type)) return false;
+  if(f.q){ const hay=(x.name+" "+x.org+" "+x.regions+" "+x.type+" "+(x.notes||"")+" "+(x.how||"")).toLowerCase(); if(!f.q.toLowerCase().split(/\s+/).every(w=>hay.includes(w))) return false; }
+  return true;
+}
+function missionCard(x){
+  const on=isFav(x.id);
+  const scopeTxt={domestic:"Domestic",international:"International",both:"Domestic & international"}[x.scope]||x.scope;
+  const dates=(x.dates||[]).filter(d=>d.label);
+  return el("article",{class:"card",style:"--c:var(--c-mission)"},
+    el("div",{class:"cdate"}, el("div",{class:"m",text:scopeTxt.split(" ")[0].toUpperCase()}), el("div",{class:"dd",style:"font-size:15px",text:x.type})),
+    el("div",{class:"cbody"},
+      el("span",{class:"cat",style:"--c:var(--c-mission)",text:scopeTxt+(x.faith?" · Faith-based":"")+(x.nearby?" · Near SW Virginia":"")}),
+      el("h4",{}, x.name),
+      el("div",{class:"meta"}, el("span",{}, "Organizer: ", el("button",{class:"orglink",type:"button",title:"Show only "+mOrg(x),onclick:()=>setMOrg(mOrg(x))}, x.org)), el("span",{text:x.regions})),
+      (x.roles&&x.roles.length)? el("div",{class:"meta"}, el("span",{text:"Who can serve: "+x.roles.join(", ")})) : null,
+      (x.length||x.cost)? el("div",{class:"meta"}, x.length? el("span",{text:"Length: "+x.length}):null, x.cost? el("span",{text:"Cost: "+x.cost}):null) : null,
+      x.how? el("p",{class:"note",text:x.how}) : null,
+      x.notes? el("p",{class:"note",text:x.notes}) : null,
+      dates.length? el("ul",{class:"mand"}, dates.map(d=>el("li",{text:d.label+(d.start? " — "+fmtRange({start:d.start,end:d.end||d.start,status:"confirmed"}):"")}))) : null,
+      el("div",{class:"contact"}, contactBits(x)),
+      el("div",{class:"actions"}, el("a",{class:"btn primary",href:x.url,target:"_blank",rel:"noopener"},"Visit / apply ↗"),
+        el("button",{class:"btn",type:"button","aria-pressed":on?"true":"false",onclick:()=>toggleFav(x.id)}, on?"★ Saved":"☆ Save to favorites"))),
+    el("button",{class:"star",type:"button","aria-pressed":on?"true":"false","aria-label":(on?"Remove ":"Save ")+x.name,onclick:()=>toggleFav(x.id)}, on?"★":"☆"));
+}
+function setMOrg(o){ S.mf.org=o; renderMissions(); $("#view-missions")?.scrollIntoView({behavior:"smooth",block:"start"}); }
+function clearMFilters(){ S.mf={q:"",scope:"",role:"",faith:"",chapters:"",nearby:false,org:""};
+  for(const id of ["mq","mscope","mrole","mfaith","mchap","morg"]){ const e=document.getElementById(id); if(e) e.value=""; }
+  const n=document.getElementById("mnear"); if(n) n.checked=false; renderMissions(); }
+let missionsBuilt=false;
+function renderMissions(){
+  const box=$("#view-missions");
+  if(!missionsBuilt){
+    missionsBuilt=true;
+    const q=el("input",{class:"search",id:"mq",type:"search",placeholder:"Search organizations, countries, roles…","aria-label":"Search mission opportunities"});
+    let t; q.addEventListener("input",()=>{ clearTimeout(t); t=setTimeout(()=>{ S.mf.q=q.value.trim(); renderMissions(); },150); });
+    const sel=(id,label,opts,key)=>{ const s=el("select",{class:"inp",id,"aria-label":label}, opts.map(([v,tx])=>el("option",{value:v,text:tx}))); s.addEventListener("change",()=>{ S.mf[key]=s.value; renderMissions(); }); return s; };
+    const near=el("input",{type:"checkbox",id:"mnear"}); near.addEventListener("change",()=>{ S.mf.nearby=near.checked; renderMissions(); });
+    const orgSel=el("select",{class:"inp",id:"morg","aria-label":"Organization"}); orgSel.addEventListener("change",()=>{ S.mf.org=orgSel.value; renderMissions(); });
+    box.replaceChildren(
+      el("section",{class:"panel"},
+        el("h3",{text:"Eye care missions"}),
+        el("p",{class:"note",text:"Domestic free clinics, event screenings and international mission teams for optometrists, students, opticians, techs and non-clinical helpers. Save any organization to your favorites to keep a shortlist."}),
+        el("p",{class:"note",text:"CE credit: Virginia allows up to 2 CE hours per renewal for unpaid care through a local health department or free clinic (1 CE hour per 3 hours served). International trips generally don't earn CE; check your state board."})),
+      el("section",{class:"filters"},
+        el("div",{class:"frow"}, q, orgSel,
+          sel("mscope","Where",[["","Domestic & international"],["domestic","Domestic (US)"],["international","International"]],"scope"),
+          sel("mrole","Who can serve",[["","Any role"],...MROLES.map(r=>[r,r])],"role"),
+          sel("mfaith","Faith-based",[["","Faith-based & secular"],["faith","Faith-based only"],["secular","Secular only"]],"faith"),
+          sel("mchap","VOSH chapters",[["","Show VOSH chapters"],["hide","Hide VOSH chapters"]],"chapters")),
+        el("div",{class:"frow"}, el("label",{class:"tog"}, near, " Near SW Virginia (VA, KY, TN, NC, WV)"), el("button",{class:"btn small ghost",type:"button",id:"mclear",onclick:clearMFilters},"Clear filters"), el("span",{class:"count",id:"mcount"}))),
+      el("div",{id:"mresults",class:"cards"}));
+  }
+  const res=$("#mresults");
+  if(!S.missions.length){ res.replaceChildren(el("div",{class:"empty"}, el("b",{text:"Loading mission opportunities…"}), "Organizations appear here in a moment.")); return; }
+  const orgSel=$("#morg");
+  if(orgSel){ const counts={}; S.missions.forEach(x=>{ const k=mOrg(x); counts[k]=(counts[k]||0)+1; });
+    const keys=Object.keys(counts).sort((a,b)=>a.localeCompare(b)); const sig=keys.map(k=>k+counts[k]).join("|");
+    if(orgSel.dataset.sig!==sig){ orgSel.dataset.sig=sig; orgSel.replaceChildren(el("option",{value:"",text:"All organizations ("+keys.length+")"}), ...keys.map(k=>el("option",{value:k,text:k+(counts[k]>1?" ("+counts[k]+")":"")}))); }
+    if(S.mf.org && !counts[S.mf.org]) S.mf.org=""; orgSel.value=S.mf.org||""; }
+  const list=S.missions.filter(mPasses).sort((a,b)=>(b.nearby-a.nearby)||a.name.localeCompare(b.name));
+  $("#mcount").textContent=list.length+" of "+S.missions.length+" opportunities";
+  const isChap=x=>/^m-vosh-/.test(x.id) && /chapter/.test(x.type);
+  const support=list.filter(x=>SUPPORT_TYPES.has(x.type));
+  const chapters=list.filter(x=>isChap(x)&&!SUPPORT_TYPES.has(x.type));
+  const rest=list.filter(x=>!SUPPORT_TYPES.has(x.type)&&!isChap(x));
+  const dom=rest.filter(x=>x.scope!=="international"), intl=rest.filter(x=>x.scope==="international");
+  const upcoming=[]; list.forEach(x=>(x.dates||[]).forEach(d=>{ if(d.start) upcoming.push({x,d}); })); upcoming.sort((a,b)=>a.d.start.localeCompare(b.d.start));
+  const out=[];
+  if(S.mf.org) out.push(el("div",{class:"orgbar"}, el("span",{}, "Showing ", el("b",{text:S.mf.org})), el("button",{class:"btn small ghost",type:"button",onclick:()=>setMOrg("")},"Show all organizations")));
+  if(upcoming.length && !S.mf.q) out.push(el("section",{class:"panel"}, el("h3",{text:"Dated 2027 trips"}), el("ul",{class:"mand"}, upcoming.map(({x,d})=>el("li",{}, el("b",{text:fmtRange({start:d.start,end:d.end||d.start,status:"confirmed"},true)+" · "+d.label}), " — "+x.org+" ", el("a",{href:x.url,target:"_blank",rel:"noopener",text:"details ↗"}))))));
+  if(dom.length){ out.push(el("h2",{class:"sec-h",text:"Domestic & both"})); out.push(...dom.map(missionCard)); }
+  if(intl.length){ out.push(el("h2",{class:"sec-h",text:"International"})); out.push(...intl.map(missionCard)); }
+  if(chapters.length){ out.push(el("h2",{class:"sec-h",text:"VOSH chapters (trip organizers)"})); out.push(el("p",{class:"note",text:"Each chapter runs its own trips. Contacts are the chapter presidents listed by VOSH International."})); out.push(...chapters.map(missionCard)); }
+  if(support.length){ out.push(el("h2",{class:"sec-h",text:"Find a trip, supplies & funding"})); out.push(...support.map(missionCard)); }
+  if(!list.length) out.push(el("div",{class:"empty"}, el("b",{text:"No opportunities match"}), "Clear a filter to see more."));
+  res.replaceChildren(...out);
+}
+
+/* ---------- about ---------- */
+function renderAbout(){
+  const box=$("#view-about"); const m=S.meta;
+  const fmt=s=>s? pd(s).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"}) : "—";
+  const confirmed=S.events.filter(e=>e.status==="confirmed").length;
+  const kids=[el("div",{class:"about"},
+    el("h3",{text:"How this hub stays current"}),
+    el("p",{text:"Every week the listings are re-checked against organizer websites, the AOA and state association calendars, and travel-CE providers. New 2027 meetings are added, dates and registration links are corrected, and meetings marked \"Dates TBA\" are filled in as they are announced. New and changed listings carry a badge for two weeks."}),
+    el("p",{}, "Last update: ", el("b",{text:fmt(m?.lastUpdated)}), " · Next scheduled: ", el("b",{text:fmt(m?.nextUpdate)}), " · ", el("b",{text:String(S.events.length)}), " listings (", String(confirmed), " with 2027 dates)."),
+    el("h3",{text:"Change log"}),
+    el("ul",{class:"log"}, (m?.changes||[]).slice().reverse().slice(0,30).map(c=>el("li",{}, el("span",{class:"mono",text:c.date}), el("span",{text:c.text})))),
+    el("h3",{text:"About COPE status"}),
+    el("p",{text:"Each listing shows what the organizer states about COPE accreditation. Individual courses are approved by COPE, usually a few weeks before a meeting, and appear in ARBO's COPE activity search once the provider registers the event. Confirm COPE course numbers with the organizer if your state board requires them."}),
+    el("h3",{text:"Featured listings"}),
+    el("p",{text:"Featured placements, when offered, appear first in their month and are always labeled Sponsored. Sponsorship never changes a listing's dates, COPE status or contact details."+(CFG.contactEmail? " To feature your meeting, email "+CFG.contactEmail+".":"")}),
+    el("h3",{text:"Suggest a meeting or correction"}),
+    suggestForm(),
+    el("p",{class:"note",text:"Listings and state rule summaries are compiled from public sources and may contain errors. Confirm dates with the organizer and requirements with your state board."}))];
+  box.replaceChildren(...kids);
+}
+function suggestForm(){
+  if(!sb) return el("p",{class:"note",text: CFG.contactEmail? "Send additions or corrections to "+CFG.contactEmail+"." : "Suggestions open once accounts are enabled."});
+  const n=el("input",{class:"inp",type:"text",id:"sgName",placeholder:"Meeting name"}), u=el("input",{class:"inp",type:"url",id:"sgUrl",placeholder:"https://… (organizer page)"}), t=el("input",{class:"inp",type:"text",id:"sgNote",placeholder:"Dates, correction, or note"});
+  return el("div",{class:"suggest"}, el("label",{class:"field"},"Meeting",n), el("label",{class:"field"},"Link",u), el("label",{class:"field"},"Details",t),
+    el("div",{class:"field",style:"justify-content:flex-end"}, el("button",{class:"btn",type:"button",onclick:async ev=>{ if(!n.value&&!u.value){ toast("Add a meeting name or link"); return; } const b=ev.currentTarget; b.disabled=true;
+      const {error}=await sb.from("suggestions").insert({name:n.value.slice(0,200), url:u.value.slice(0,500), note:t.value.slice(0,1000)});
+      if(error) toast("Couldn't send: "+error.message); else { n.value=u.value=t.value=""; toast("Thanks — it will be reviewed in the next weekly update"); } b.disabled=false; }},"Send suggestion")));
+}
+
+/* ---------- filters UI ---------- */
+function buildFilters(){
+  const reg=$("#region"); reg.replaceChildren(el("option",{value:"",text:"All locations"}), el("option",{value:"INTL",text:"International (travel)"}), el("option",{value:"CRUISE",text:"Cruises"}), el("option",{value:"CANADA",text:"Canada"}), el("option",{value:"ONLINE",text:"Online"}), ...Object.entries(US).map(([k,v])=>el("option",{value:k,text:v})));
+  const fs=$("#focus"); fs.replaceChildren(el("option",{value:"",text:"All topics"}), ...FOCI.map(x=>el("option",{value:x,text:x})));
+  $("#focus").addEventListener("change",ev=>{ S.f.focus=ev.target.value; renderAll(); });
+  $("#format").addEventListener("change",ev=>{ S.f.format=ev.target.value; renderAll(); });
+  const chips=$("#catChips"); chips.replaceChildren(...Object.entries(CATS).map(([k,v])=>el("button",{class:"chip",type:"button",style:"--c:var("+v.c+")","aria-pressed":"true",onclick:ev=>{ const on=S.f.cats.has(k); if(on) S.f.cats.delete(k); else S.f.cats.add(k); ev.currentTarget.setAttribute("aria-pressed",on?"false":"true"); renderAll(); }}, el("span",{class:"dot"}), v.label)));
+  let tmr; $("#q").addEventListener("input",ev=>{ clearTimeout(tmr); tmr=setTimeout(()=>{ S.f.q=ev.target.value.trim(); renderAll(); },150); });
+  $("#region").addEventListener("change",ev=>{ S.f.region=ev.target.value; renderAll(); });
+  $("#minHours").addEventListener("change",ev=>{ S.f.minHours=+ev.target.value; renderAll(); });
+  $("#credit").addEventListener("change",ev=>{ S.f.credit=ev.target.value; S.credTouched=true; renderAll(); });
+  $("#maxMiles").addEventListener("change",ev=>{ S.f.maxMiles=+ev.target.value; renderAll(); });
+  $("#showTba").addEventListener("change",ev=>{ S.f.showTba=ev.target.checked; renderAll(); });
+  $("#favOnly").addEventListener("change",ev=>{ S.f.favOnly=ev.target.checked; renderAll(); });
+  for(const b of document.querySelectorAll("nav.tabs button")) b.addEventListener("click",()=>setView(b.dataset.view));
+}
+
+function renderStamp(){
+  const m=S.meta;
+  if(!S.loaded){ $("#stamp").textContent = S.dbOk===false? "Listings unavailable — refresh to retry" : "Loading listings…"; return; }
+  const n=S.events.filter(passes).length;
+  $("#count").textContent = n+" of "+S.events.length+" listings shown";
+  $("#stamp").replaceChildren(el("div",{}, el("b",{text:S.events.filter(e=>e.status==="confirmed").length+" dated"}), " · "+S.events.filter(e=>e.status==="tba").length+" awaiting dates · "+S.events.filter(e=>e.status==="ongoing").length+" year-round"),
+    el("div",{text: m? "Updated weekly · last "+pd(m.lastUpdated).toLocaleDateString("en-US",{month:"short",day:"numeric"}) : ""}));
+}
+function renderAll(){
+  renderStamp(); syncCreditDefault();
+  if(S.view==="year") renderYear(); else if(S.view==="list") renderList(); else if(S.view==="tracker") renderTracker(); else if(S.view==="missions") renderMissions(); else renderAbout();
+  renderFavs();
+}
+
+/* ---------- persistence & accounts ---------- */
+let sb=null, pTimer=null, tTimer=null, rTimer=null, chain=Promise.resolve();
+function lsGet(k){ try{ return JSON.parse(localStorage.getItem(k)||"null"); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+function lsDel(k){ try{ localStorage.removeItem(k); }catch(e){} }
+function normProfile(p){ p=p||{}; const o={favorites:[...(p.favorites||[])], licenses:JSON.parse(JSON.stringify(p.licenses||[])), home:p.home||HOME_DEFAULT}; if(p.person) o.person=JSON.parse(JSON.stringify(p.person)); return o; }
+function configured(){ return !!(window.supabase && CFG.supabaseUrl && CFG.supabaseAnonKey && !/YOUR[-_]/i.test(CFG.supabaseUrl+CFG.supabaseAnonKey)); }
+function queueRemote(){ if(!sb||!S.uid) return; clearTimeout(rTimer); rTimer=setTimeout(()=>{ const row={user_id:S.uid, profile:JSON.parse(JSON.stringify(S.profile)), transcript:{rows:S.transcript.rows}, updated_at:new Date().toISOString()};
+  chain=chain.then(async()=>{ const {error}=await sb.from("user_data").upsert(row); if(error) toast("Couldn't sync to your account: "+error.message); }); },300); }
+function saveProfile(){ clearTimeout(pTimer); pTimer=setTimeout(()=>{ if(S.uid) queueRemote(); else lsSet("cehub.profile", JSON.parse(JSON.stringify(S.profile))); },300); }
+function saveTranscript(){ clearTimeout(tTimer); tTimer=setTimeout(()=>{ if(S.uid) queueRemote(); else lsSet("cehub.transcript", {rows:S.transcript.rows}); },300); }
+function loadLocal(){ const p=lsGet("cehub.profile"); S.profile=normProfile(p); const t=lsGet("cehub.transcript"); S.transcript={rows:(t&&t.rows)||[]}; }
+
+async function loadRemote(){
+  const {data,error}=await sb.from("user_data").select("profile,transcript").eq("user_id",S.uid).maybeSingle();
+  if(error){ toast("Couldn't load your saved data: "+error.message); return; }
+  const lp=lsGet("cehub.profile"), lt=lsGet("cehub.transcript");
+  if(data){ S.profile=normProfile(data.profile); S.transcript={rows:(data.transcript&&data.transcript.rows)||[]}; }
+  else { S.profile=normProfile(null); S.transcript={rows:[]}; }
+  let merged=!data;
+  if(lp){ for(const id of (lp.favorites||[])) if(!S.profile.favorites.includes(id)){ S.profile.favorites.push(id); merged=true; }
+    for(const l of (lp.licenses||[])) if(!S.profile.licenses.some(x=>x.state===l.state)){ S.profile.licenses.push(l); merged=true; }
+    if(!S.profile.home && lp.home){ S.profile.home=lp.home; merged=true; }
+    if(!S.profile.person && lp.person){ S.profile.person=lp.person; merged=true; } }
+  if(lt&&lt.rows){ const key=r=>r.date+"|"+String(r.courseId||r.title).toLowerCase()+"|"+r.hours; const seen=new Set(S.transcript.rows.map(key)); for(const r of lt.rows) if(!seen.has(key(r))){ S.transcript.rows.push(r); seen.add(key(r)); merged=true; } }
+  lsDel("cehub.profile"); lsDel("cehub.transcript");
+  if(merged) queueRemote();
+}
+async function applySession(session){
+  const uid=session?.user?.id||null; if(uid===S.uid) return;
+  S.uid=uid; S.email=session?.user?.email||"";
+  if(uid){ S.personalMode="account"; await loadRemote(); }
+  else { S.personalMode="local"; loadLocal(); }
+  renderAcct(); renderAll();
+}
+function renderAcct(){
+  const a=$("#acct"); if(!sb){ a.replaceChildren(); return; }
+  if(S.uid) a.replaceChildren(el("span",{class:"who",title:S.email,text:S.email}), el("button",{class:"btn small",type:"button",onclick:async()=>{ await sb.auth.signOut(); toast("Signed out"); }},"Sign out"));
+  else a.replaceChildren(el("button",{class:"btn small primary",type:"button",onclick:openSignIn},"Sign in"));
+}
+function openSignIn(){
+  const body=$("#dlgBody"); const email=el("input",{class:"inp",type:"email",id:"signinEmail",placeholder:"you@practice.com",autocomplete:"email",required:true});
+  const msg=el("p",{class:"note",text:"We'll email you a one-time sign-in link — no password. Your licenses, transcript and favorites are then saved privately to your account."});
+  const go=el("button",{class:"btn primary",type:"submit"},"Email me a sign-in link");
+  const form=el("form",{class:"signin",onsubmit:async ev=>{ ev.preventDefault(); const v=email.value.trim(); if(!/^\S+@\S+\.\S+$/.test(v)){ toast("Enter a valid email address"); return; } go.disabled=true;
+      const {error}=await sb.auth.signInWithOtp({email:v, options:{emailRedirectTo: location.origin+location.pathname}});
+      go.disabled=false; if(error){ msg.textContent="Couldn't send the link: "+error.message; return; }
+      form.replaceChildren(el("h2",{text:"Check your email"}), el("p",{text:"We sent a sign-in link to "+v+". Open it on this device to finish signing in. It can take a minute to arrive — check spam if it doesn't."}), el("div",{class:"actions"}, el("button",{class:"btn",type:"button",onclick:()=>$("#dlg").close()},"Close"))); }},
+    el("h2",{text:"Sign in to CE Hub"}), msg, el("label",{class:"field"},"Email",email), el("div",{class:"actions"}, go, el("button",{class:"btn ghost",type:"button",onclick:()=>$("#dlg").close()},"Cancel")));
+  body.replaceChildren(form); const d=$("#dlg"); if(!d.open) d.showModal(); setTimeout(()=>email.focus(),50);
+}
+async function initAuth(){
+  loadLocal();
+  if(!configured()) return;
+  try{ sb=window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey); }catch(e){ console.warn(e); sb=null; return; }
+  renderAcct();
+  const {data}=await sb.auth.getSession(); await applySession(data?.session||null);
+  sb.auth.onAuthStateChange((_evt, session)=>{ setTimeout(()=>applySession(session),0); });
+}
+async function boot(){
+  buildFilters();
+  setView("list");
+  try{
+    const [ev,req,meta]=await Promise.all(["events","requirements","meta"].map(n=>fetch("data/"+n+".json",{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(n+" "+r.status); return r.json(); })));
+    S.events=Array.isArray(ev)? ev : []; S.req=req; S.meta=meta; S.loaded=true; S.dbOk=true;
+    fetch("data/requirements-md.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(j=>{ S.reqMd=j; renderAll(); }).catch(()=>{});
+    fetch("data/missions.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(ms=>{ S.missions=Array.isArray(ms)?ms:[]; renderAll(); }).catch(()=>{});
+  }catch(e){ console.warn(e); S.dbOk=false; }
+  renderAll();
+  await initAuth();
+  renderAll();
+}
+boot();
+})();
+</script>
+</body>
+</html>

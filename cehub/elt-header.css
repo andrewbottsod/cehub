@@ -8,7 +8,7 @@
 .elt-nav a.l[aria-current="page"]{box-shadow:inset 0 -1px 0 #B3593A}
 .elt-nav a.l.dd::after{content:"";width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px)}
 .elt-logo img{height:34px;width:auto;display:block}
-.elt-logo .sm{display:none}
+.elt-logo .sm,.elt-logo .on-dark{display:none}
 .elt-btn{display:inline-flex;align-items:center;background:#B3593A;color:#fff!important;font:700 11px/1 "Hanken Grotesk",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:14px 24px;border-radius:999px;text-decoration:none;white-space:nowrap}
 .elt-btn:hover{background:#9A4527}
 .elt-menu{display:none;width:44px;height:44px;border:0;background:none;position:relative;cursor:pointer;color:#1E2A3A}
@@ -32,10 +32,37 @@
 .lockrow{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
 .scrim{position:fixed;inset:0;background:rgba(30,42,58,.55);z-index:45}
 dialog.mock{position:fixed;inset:0;margin:auto;z-index:50;height:fit-content}
-@media (max-width:1180px){.elt-nav.l,.elt-nav.r a.l{display:none}.elt-in{grid-template-columns:auto 1fr auto;padding:0 18px;height:64px}.elt-menu{display:block}.elt-logo .lg{display:none}.elt-logo .sm{display:block;height:28px}.elt-nav.r{gap:8px}}
+@media (max-width:1180px){.elt-nav.l,.elt-nav.r a.l{display:none}.elt-in{grid-template-columns:auto 1fr auto;padding:0 18px;height:64px}.elt-menu{display:block}.elt-logo .lg{display:none}.elt-logo .sm:not(.on-dark){display:block;height:28px}.elt-nav.r{gap:8px}}
 @media (max-width:640px){.elt-btn{padding:11px 14px;font-size:10px;letter-spacing:.14em}.mplans{grid-template-columns:1fr}.mbr{font-size:11px;border-radius:14px;line-height:1.35}}
 /* Menu button wiring: the links hidden below 1180px open in this panel. */
 .elt-drawer{background:#FFFFFF;border-top:1px solid #E0D5C4;padding:4px 18px 12px}
 .elt-drawer a{display:flex;align-items:center;min-height:44px;font:600 12px/1 "Hanken Grotesk",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E2A3A;text-decoration:none;border-bottom:1px solid #E0D5C4}
 .elt-drawer a[aria-current="page"]{box-shadow:inset 0 -1px 0 #B3593A}
 @media (min-width:1181px){.elt-drawer{display:none!important}}
+/* Dark header: same two selectors tokens.css uses. Navy bar, light type, terra accent. */
+@media (prefers-color-scheme: dark){
+ :root:not([data-theme="light"]) .elt-hdr,:root:not([data-theme="light"]) .elt-drawer{background:#1E2A3A;color:#F4EEE6;border-color:#34455C}
+ :root:not([data-theme="light"]) .elt-nav a.l,:root:not([data-theme="light"]) .elt-drawer a,:root:not([data-theme="light"]) .elt-menu{color:#F4EEE6}
+ :root:not([data-theme="light"]) .elt-drawer a{border-bottom-color:#34455C}
+ :root:not([data-theme="light"]) .elt-nav a.l[aria-current="page"],:root:not([data-theme="light"]) .elt-drawer a[aria-current="page"]{box-shadow:inset 0 -1px 0 #E89A74}
+ :root:not([data-theme="light"]) .elt-btn{background:#E89A74;color:#1E2A3A!important}
+ :root:not([data-theme="light"]) .elt-btn:hover{background:#F4EEE6;color:#1E2A3A!important}
+ :root:not([data-theme="light"]) .elt-logo .lg:not(.on-dark),:root:not([data-theme="light"]) .elt-logo .sm:not(.on-dark){display:none}
+ :root:not([data-theme="light"]) .elt-logo .lg.on-dark{display:block;height:34px}
+}
+@media (prefers-color-scheme: dark) and (max-width:1180px){
+ :root:not([data-theme="light"]) .elt-logo .lg.on-dark{display:none}
+ :root:not([data-theme="light"]) .elt-logo .sm.on-dark{display:block;height:28px}
+}
+:root[data-theme="dark"] .elt-hdr,:root[data-theme="dark"] .elt-drawer{background:#1E2A3A;color:#F4EEE6;border-color:#34455C}
+:root[data-theme="dark"] .elt-nav a.l,:root[data-theme="dark"] .elt-drawer a,:root[data-theme="dark"] .elt-menu{color:#F4EEE6}
+:root[data-theme="dark"] .elt-drawer a{border-bottom-color:#34455C}
+:root[data-theme="dark"] .elt-nav a.l[aria-current="page"],:root[data-theme="dark"] .elt-drawer a[aria-current="page"]{box-shadow:inset 0 -1px 0 #E89A74}
+:root[data-theme="dark"] .elt-btn{background:#E89A74;color:#1E2A3A!important}
+:root[data-theme="dark"] .elt-btn:hover{background:#F4EEE6;color:#1E2A3A!important}
+:root[data-theme="dark"] .elt-logo .lg:not(.on-dark),:root[data-theme="dark"] .elt-logo .sm:not(.on-dark){display:none}
+:root[data-theme="dark"] .elt-logo .lg.on-dark{display:block;height:34px}
+@media (max-width:1180px){
+ :root[data-theme="dark"] .elt-logo .lg.on-dark{display:none}
+ :root[data-theme="dark"] .elt-logo .sm.on-dark{display:block;height:28px}
+}

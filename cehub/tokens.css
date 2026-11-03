@@ -1,0 +1,153 @@
+/* =====================================================================
+   CE Hub × Eye Love Travel — tokens.css  (drop-in restyle, Oct 2026)
+   Load AFTER the app's own <style> block (or paste at the end of it).
+   Part 1 only re-assigns the app's EXISTING custom properties — no new
+   token names. Part 2 is a small set of overrides on EXISTING selectors.
+   No markup, data/*.json, config.js or JS (incl. signInWithOtp) changes.
+   Google Fonts (replace the Zilla Slab / Libre Franklin / Plex link):
+   https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Hanken+Grotesk:wght@400;500;600;700&display=swap
+   ===================================================================== */
+
+/* ---------- PART 1 · TOKENS (light) ---------- */
+:root{
+  /* surfaces — white #FFFFFF / beige #EFE6D8 (bg is a 50% beige tint) */
+  --bg:#F6F1E9; --surface:#FFFFFF; --surface-2:#EFE6D8;
+  /* text — brown #3C2F2A body; muted 6.6:1 on white, 5.3:1 on beige */
+  --ink:#3C2F2A; --muted:#6A5A4E; --line:#E0D5C4;
+  /* terra cotta: full #B3593A only for primary actions (white text 4.77:1) */
+  --accent:#B3593A; --accent-ink:#FFFFFF; --accent-soft:#F6E6DC;
+  /* "fluor" (NEW badge, sponsored tint) → warm sand; ink 7.8:1 */
+  --fluor:#F2DFC2; --fluor-ink:#5A3B12;
+  --good:#3D6B35; --warn:#8A5A00; --bad:#9E2F2F;
+  /* 14 earthy category colors — each ≥4.5:1 as label text on white,
+     bg (#F6F1E9) and beige (#EFE6D8); ≥3:1 as a border. Min ΔE(Lab) between any two ≈17. */
+  --c-national:#26426A;      /* slate navy   10.2:1 */
+  --c-state:#4F6B26;         /* moss          6.1:1 */
+  --c-specialty:#6E4489;     /* plum          7.4:1 */
+  --c-travel:#94502C;        /* clay          6.1:1 (darker than the terra cotta CTA) */
+  --c-school:#8E3A5C;        /* mulberry      7.2:1 */
+  --c-regional:#2D6E8C;      /* lake          5.6:1 */
+  --c-canada:#A8363A;        /* brick         6.5:1 */
+  --c-industry:#5E6670;      /* pewter        5.8:1 */
+  --c-ophthalmology:#856010; /* ochre         5.7:1 */
+  --c-procedures:#6E6A12;    /* olive         5.6:1 */
+  --c-online:#1B6E6E;        /* teal          6.0:1 */
+  --c-local:#6E4F3A;         /* walnut        7.4:1 */
+  --c-staff:#3E5296;         /* indigo        7.4:1 */
+  --c-mission:#2E6B48;       /* juniper       6.3:1 */
+  --f-display:"Tenor Sans","Gill Sans",sans-serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --f-mono:"Hanken Grotesk",system-ui,sans-serif; /* numerals: tabular via Part 2 */
+  --radius:6px;
+}
+/* ---------- PART 1b · TOKENS (dark) — same two selectors the app uses ---------- */
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#172130; --surface:#1E2A3A; --surface-2:#25344A; --ink:#F4EEE6; --muted:#B9AFA4; --line:#34455C;
+  --accent:#E89A74; --accent-ink:#1E2A3A; --accent-soft:#3A3236; --fluor:#E8C892; --fluor-ink:#2C1A08;
+  --good:#7FC08F; --warn:#E8B45C; --bad:#F08F7F;
+  --c-national:#8897AD; --c-state:#9EAE88; --c-specialty:#AF98BE; --c-travel:#C49F8B; --c-school:#C193A5; --c-regional:#8CAFC0; --c-canada:#CF9093; --c-industry:#A6ABB0; --c-ophthalmology:#BCA87C; --c-procedures:#AFAD7D; --c-online:#82AFAF; --c-local:#AF9E93; --c-staff:#95A0C5; --c-mission:#8CAE9A;
+  color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#172130; --surface:#1E2A3A; --surface-2:#25344A; --ink:#F4EEE6; --muted:#B9AFA4; --line:#34455C;
+  --accent:#E89A74; --accent-ink:#1E2A3A; --accent-soft:#3A3236; --fluor:#E8C892; --fluor-ink:#2C1A08;
+  --good:#7FC08F; --warn:#E8B45C; --bad:#F08F7F;
+  --c-national:#8897AD; --c-state:#9EAE88; --c-specialty:#AF98BE; --c-travel:#C49F8B; --c-school:#C193A5; --c-regional:#8CAFC0; --c-canada:#CF9093; --c-industry:#A6ABB0; --c-ophthalmology:#BCA87C; --c-procedures:#AFAD7D; --c-online:#82AFAF; --c-local:#AF9E93; --c-staff:#95A0C5; --c-mission:#8CAE9A;
+  color-scheme:dark }
+
+/* ---------- PART 2 · COMPONENT OVERRIDES (existing selectors only) ---------- */
+body{font-size:14.5px;line-height:1.55}
+/* text-safe terra cotta for links & text-buttons; full terra cotta stays on .btn.primary */
+a,.btn.ghost,.copy,.orglink,.b-upd{color:#9A4527}
+:root[data-theme="dark"] a,:root[data-theme="dark"] .btn.ghost,:root[data-theme="dark"] .copy,:root[data-theme="dark"] .orglink,:root[data-theme="dark"] .b-upd{color:var(--accent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) a,:root:not([data-theme="light"]) .btn.ghost,:root:not([data-theme="light"]) .copy,:root:not([data-theme="light"]) .orglink,:root:not([data-theme="light"]) .b-upd{color:var(--accent)}}
+.mono,.cdate,.erow .d,.favlist .d,td.num,.bar .lbl span:last-child,.month h3 small{font-variant-numeric:tabular-nums}
+/* headings: Tenor Sans is single-weight — never faux-bold it */
+.brand h1,.month h3,.cbody h4,.sec-h,.favs h2,.panel h3,.lichead h4,.dlg h2,.empty b,.about h3{font-weight:400}
+.brand h1,.month h3,.sec-h,.favs h2,.panel h3,.dlg h2,.about h3{text-transform:uppercase;letter-spacing:.1em}
+.brand h1{font-size:24px;letter-spacing:.16em}
+.brand h1 span{color:#9A4527}
+/* masthead + tabs (site nav style) */
+header.mast{box-shadow:0 1px 0 var(--line);border-bottom:0}
+nav.tabs{gap:22px;margin-top:10px}
+nav.tabs button{font:600 11px/1 var(--f-body);letter-spacing:.18em;text-transform:uppercase;padding:14px 0 13px;border-bottom-width:2px}
+nav.tabs button:hover{color:var(--ink)}
+/* buttons: pills, like the site */
+.btn{border-radius:999px;font-weight:600;font-size:12.5px;padding:7px 14px;border-color:var(--line);transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{font:700 11px/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;padding:9px 16px}
+.btn.primary:hover{background:#9A4527;border-color:#9A4527}
+.btn.small{padding:5px 11px;font-size:11.5px}
+.btn.small.primary{padding:7px 13px;font-size:10.5px}
+.btn[aria-pressed="true"]{border-color:var(--c-ophthalmology);color:var(--ink);background:color-mix(in srgb,var(--fluor) 45%,var(--surface))}
+/* filters */
+.filters{border-radius:var(--radius);padding:16px 18px;gap:12px}
+.search,.filters select,.inp{background:var(--surface);border-color:#CDBFAC;border-radius:6px;padding:9px 11px}
+.search:focus,.filters select:focus,.inp:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+/* category chips */
+.chip{border-color:var(--line);color:var(--ink);font-weight:500;padding:6px 12px;background:var(--surface)}
+.chip .dot{width:8px;height:8px}
+.chip[aria-pressed="true"]{border-color:var(--c);color:var(--ink);background:color-mix(in srgb,var(--c) 10%,var(--surface));font-weight:600}
+.chip[aria-pressed="false"]{color:var(--muted)}
+/* listing card */
+.card{border-left-width:4px;padding:18px 20px;gap:18px;grid-template-columns:108px minmax(0,1fr) auto}
+.card:hover{box-shadow:0 10px 24px -18px rgba(30,42,58,.45)}
+.cdate{border-right:1px solid var(--line);padding-right:10px;text-align:center;align-self:start}
+.cdate .m{font:700 10px/1.2 var(--f-body);letter-spacing:.08em;color:#9A4527;overflow-wrap:anywhere}
+.cdate .dd{font:400 22px/1.15 var(--f-display);color:#1E2A3A;margin-top:6px}
+.cbody h4{font-size:19px;letter-spacing:.02em;color:#1E2A3A}
+.cat{font-size:10.5px;font-weight:700;letter-spacing:.14em}
+.meta{font-size:13px}
+/* badges */
+.badge{font:700 9.5px/1.5 var(--f-body);letter-spacing:.14em;padding:2px 7px;border-radius:999px;vertical-align:3px}
+.b-new{background:var(--fluor);color:var(--fluor-ink)}
+.b-upd{background:var(--accent-soft)}
+.b-sp{background:transparent;color:#1E2A3A;border:1px solid #1E2A3A}
+.b-tba{background:var(--surface-2);color:var(--muted)}
+.sponsored{background:color-mix(in srgb,var(--fluor) 22%,var(--surface))}
+/* favorites star — earthy gold, 3.9:1 as an icon */
+.star{color:#8C7B6E}.star[aria-pressed="true"]{color:#A8781A}
+/* year calendar */
+.month{border-radius:var(--radius)}
+.month h3{font-size:17px;padding:14px 16px 10px;border-bottom:1px solid var(--line);margin-bottom:6px;color:#1E2A3A}
+.month h3 small{font:600 10.5px var(--f-body);letter-spacing:.12em;text-transform:uppercase}
+.erow{border-radius:0 6px 6px 0;margin:2px 0}
+.erow .d{font-weight:600;color:#1E2A3A}
+.erow .t b .badge{display:inline-block;margin:3px 4px 0 0}  /* fixes .erow .t span{display:block} turning badges into full-width bars */
+.tbahead{font:700 10px var(--f-body);letter-spacing:.18em;color:#9A4527}
+/* sidebar */
+aside.favs{border-radius:var(--radius);border-top:3px solid var(--accent)}
+.favs h2{font-size:16px;color:#1E2A3A}
+.favlist .d{font-weight:600;color:#9A4527;font-size:11px;letter-spacing:.06em}
+/* tracker */
+.panel{border-radius:var(--radius);padding:20px 22px}
+.panel h3{font-size:16px;color:#1E2A3A}
+.lic{background:var(--surface);border-left:4px solid var(--accent)}
+.lichead h4{font-size:19px;color:#1E2A3A}
+.track{height:8px;border-radius:4px;background:var(--surface-2);border:0}
+.fill{background:#1E2A3A}
+.fill.done{background:var(--good)}
+.fill.plan{background:repeating-linear-gradient(135deg,var(--accent) 0 3px,transparent 3px 6px)}
+.wnum{background:var(--accent)}
+th{background:var(--surface-2);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#1E2A3A}
+.pill{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase}
+.drop{border-color:#CDBFAC;background:var(--surface)}
+/* dialog */
+dialog{border-radius:10px;border:0;box-shadow:0 30px 80px -20px rgba(30,42,58,.55)}
+dialog::backdrop{background:rgba(30,42,58,.55)}
+.dlg{padding:28px 30px;gap:14px}
+.dlg h2{font-size:22px;color:#1E2A3A}
+footer.foot{font-size:12.5px}
+/* dark-mode: headings that use the literal navy above flip to ink */
+:root[data-theme="dark"] :is(.cdate .dd,.cbody h4,.month h3,.erow .d,.favs h2,.panel h3,.lichead h4,.dlg h2,th,.b-sp){color:var(--ink);border-color:var(--ink)}
+:root[data-theme="dark"] :is(.cdate .m,.brand h1 span,.tbahead,.favlist .d){color:var(--accent)}
+:root[data-theme="dark"] .fill{background:var(--ink)}
+@media (prefers-color-scheme: dark){
+ :root:not([data-theme="light"]) :is(.cdate .dd,.cbody h4,.month h3,.erow .d,.favs h2,.panel h3,.lichead h4,.dlg h2,th,.b-sp){color:var(--ink);border-color:var(--ink)}
+ :root:not([data-theme="light"]) :is(.cdate .m,.brand h1 span,.tbahead,.favlist .d){color:var(--accent)}
+ :root:not([data-theme="light"]) .fill{background:var(--ink)}}
+@media (max-width:640px){
+ .card{grid-template-columns:minmax(0,1fr) auto;padding:16px}
+ .cdate{border-right:0;padding-right:0;text-align:left;border-bottom:1px solid var(--line);padding-bottom:8px}
+ .cdate .dd{margin-top:0;font-size:18px}
+ nav.tabs{gap:18px}
+}

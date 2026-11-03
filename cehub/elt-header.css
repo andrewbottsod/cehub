@@ -1,0 +1,41 @@
+/* Eye Love Travel site header for CE Hub (solid/white variant of the main-site header).
+   New, namespaced classes (.elt-*) — sits ABOVE the app's existing header.mast. */
+.elt-hdr{background:#FFFFFF;color:#1E2A3A;border-bottom:1px solid #E0D5C4;position:relative;z-index:25}
+.elt-in{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px;padding:0 max(16px,env(safe-area-inset-left,0px));gap:24px;max-width:1440px;margin:0 auto}
+.elt-nav{display:flex;align-items:center;gap:28px}
+.elt-nav.r{justify-content:flex-end}
+.elt-nav a.l{font:600 11px/1 "Hanken Grotesk",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#1E2A3A;text-decoration:none;padding:10px 0;display:inline-flex;align-items:center;gap:6px}
+.elt-nav a.l[aria-current="page"]{box-shadow:inset 0 -1px 0 #B3593A}
+.elt-nav a.l.dd::after{content:"";width:5px;height:5px;border-right:1px solid currentColor;border-bottom:1px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.elt-logo img{height:34px;width:auto;display:block}
+.elt-logo .sm{display:none}
+.elt-btn{display:inline-flex;align-items:center;background:#B3593A;color:#fff!important;font:700 11px/1 "Hanken Grotesk",system-ui,sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:14px 24px;border-radius:999px;text-decoration:none;white-space:nowrap}
+.elt-btn:hover{background:#9A4527}
+.elt-menu{display:none;width:44px;height:44px;border:0;background:none;position:relative;cursor:pointer;color:#1E2A3A}
+.elt-menu span,.elt-menu::before,.elt-menu::after{content:"";position:absolute;left:11px;right:11px;height:1px;background:currentColor}
+.elt-menu::before{top:16px}.elt-menu span{top:22px}.elt-menu::after{top:28px}
+/* membership chip in the app masthead (new element inside .acct) */
+.mbr{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--ink);background:var(--surface-2);border-radius:999px;padding:5px 12px 5px 6px}
+.mbr i{font:normal 700 9.5px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;background:var(--accent);color:var(--accent-ink);padding:4px 8px;border-radius:999px}
+.mbr.free i{background:#1E2A3A;color:#fff}
+.mk{display:inline-block;font:700 9px/1 "Hanken Grotesk",sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9A4527;background:#FBF3EC;border:1px dashed #B3593A;border-radius:999px;padding:4px 8px;vertical-align:2px;margin-left:6px}
+/* membership / upgrade dialog bits (new) */
+.mplans{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+.mplan{border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;background:var(--surface)}
+.mplan.hl{border-top:3px solid var(--accent)}
+.mplan .amt{font:400 34px/1 var(--f-display);color:#9A4527}
+.mplan .amt small{font:600 12px var(--f-body);color:var(--muted);letter-spacing:.04em}
+.mplan h3{margin:0;font:700 11px var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:#1E2A3A}
+.mplan p{margin:0;color:var(--muted);font-size:13px;flex:1}
+.mplan ul{margin:0;padding-left:18px;font-size:13px}
+.gate{position:relative}
+.lockrow{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted)}
+.scrim{position:fixed;inset:0;background:rgba(30,42,58,.55);z-index:45}
+dialog.mock{position:fixed;inset:0;margin:auto;z-index:50;height:fit-content}
+@media (max-width:1180px){.elt-nav.l,.elt-nav.r a.l{display:none}.elt-in{grid-template-columns:auto 1fr auto;padding:0 18px;height:64px}.elt-menu{display:block}.elt-logo .lg{display:none}.elt-logo .sm{display:block;height:28px}.elt-nav.r{gap:8px}}
+@media (max-width:640px){.elt-btn{padding:11px 14px;font-size:10px;letter-spacing:.14em}.mplans{grid-template-columns:1fr}.mbr{font-size:11px;border-radius:14px;line-height:1.35}}
+/* Menu button wiring: the links hidden below 1180px open in this panel. */
+.elt-drawer{background:#FFFFFF;border-top:1px solid #E0D5C4;padding:4px 18px 12px}
+.elt-drawer a{display:flex;align-items:center;min-height:44px;font:600 12px/1 "Hanken Grotesk",system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#1E2A3A;text-decoration:none;border-bottom:1px solid #E0D5C4}
+.elt-drawer a[aria-current="page"]{box-shadow:inset 0 -1px 0 #B3593A}
+@media (min-width:1181px){.elt-drawer{display:none!important}}

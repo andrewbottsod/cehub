@@ -7,10 +7,11 @@
 <meta name="description" content="Every 2027 optometry CE meeting in one calendar — national, state association, specialty and travel CE — with direct registration links, plus a free multi-state license and CE transcript tracker.">
 <meta property="og:title" content="CE Hub 2027 — Optometry CE Calendar">
 <meta property="og:description" content="National, state, specialty and destination optometry CE for 2027 with registration links and license tracking.">
-<meta name="theme-color" content="#2340c2">
+<meta name="theme-color" content="#B3593A">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Libre+Franklin:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: a working planner — sticky masthead with tabs, filter rail, 12-month grid or list, and a favorites rail on the right that becomes a bottom drawer on phones. */
 :root{
@@ -213,8 +214,40 @@ dialog::backdrop{background:rgba(8,14,20,.5)}
 .log li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px;font-size:13px}
 .suggest{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
 </style>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="elt-header.css">
 </head>
 <body>
+
+<header class="elt-hdr">
+  <div class="elt-in">
+    <nav class="elt-nav l" aria-label="Eye Love Travel"><a class="l" href="https://www.eyelovetravel.com/">Home</a><a class="l dd" href="https://www.eyelovetravel.com/destinations.html">Destinations</a><a class="l" href="https://www.eyelovetravel.com/about.html">About</a></nav>
+    <a class="elt-logo" href="https://www.eyelovetravel.com/" aria-label="Eye Love Travel home"><img class="lg" src="assets/logo-horizontal.svg" alt="Eye Love Travel" width="420" height="40"><img class="sm" src="assets/logo-icons.svg" alt="Eye Love Travel" width="100" height="28"></a>
+    <div class="elt-nav r"><a class="l dd" href="/cehub/" aria-current="page">CE Hub</a><a class="l" href="https://www.eyelovetravel.com/contact.html">Contact</a><a class="elt-btn" href="https://www.eyelovetravel.com/register.html?event=blue-ridge">Register Now</a><button class="elt-menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="elt-drawer"><span></span></button></div>
+  </div>
+  <nav class="elt-drawer" id="elt-drawer" hidden>
+    <a href="https://www.eyelovetravel.com/">Home</a>
+    <a href="https://www.eyelovetravel.com/destinations.html">Destinations</a>
+    <a href="https://www.eyelovetravel.com/about.html">About</a>
+    <a href="/cehub/" aria-current="page">CE Hub</a>
+    <a href="https://www.eyelovetravel.com/contact.html">Contact</a>
+  </nav>
+</header>
+<script>
+(function(){
+  var btn=document.querySelector(".elt-menu"), hdr=document.querySelector(".elt-hdr"), drawer=document.getElementById("elt-drawer");
+  if(!btn||!hdr||!drawer) return;
+  function setOpen(open){
+    hdr.classList.toggle("is-open", open);
+    drawer.hidden=!open;
+    btn.setAttribute("aria-expanded", open?"true":"false");
+    btn.setAttribute("aria-label", open?"Close menu":"Open menu");
+  }
+  btn.addEventListener("click", function(){ setOpen(drawer.hidden); });
+  drawer.addEventListener("click", function(ev){ if(ev.target.closest("a")) setOpen(false); });
+  document.addEventListener("keydown", function(ev){ if(ev.key==="Escape" && !drawer.hidden) setOpen(false); });
+})();
+</script>
 
 <header class="mast">
   <div class="wrap mast-in">

@@ -1,0 +1,7 @@
+# Same HTML revalidation as the deployment root, in case this directory
+# is the one Apache evaluates for /cehub/.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

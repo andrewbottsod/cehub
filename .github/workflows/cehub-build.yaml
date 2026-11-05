@@ -27,6 +27,14 @@ jobs:
         with:
           submodules: 'recursive'
 
+      # Deploy Now caches CSS and JS for 4 hours. Stamp this commit onto
+      # local asset URLs before the artifact is uploaded. Committed HTML
+      # stays unstamped so it still works from a plain static server.
+      - name: Stamp asset cache busters
+        run: |
+          python3 scripts/stamp-assets.py
+          rm -rf scripts
+
 # Please do not touch the following action
       - name: Store deployment content
         uses: ionos-deploy-now/artifact-action@v1

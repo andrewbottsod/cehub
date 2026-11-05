@@ -1294,6 +1294,16 @@ async function applySession(session){
   else { S.personalMode="local"; loadLocal(); }
   renderAcct(); renderAll();
 }
+/* Magic links must come back to this app. www.eyelovetravel.com/ is the main site, so a bare origin drops the session. /cehub/, /cehub and /cehub/index.html all return .../cehub/. A server rooted on the app directory (/ or /index.html) stays there. */
+function authReturnUrl(){
+  const path=location.pathname||"/";
+  const mark="/cehub/";
+  const at=path.indexOf(mark);
+  if(at>=0) return location.origin+path.slice(0,at)+mark;
+  if(/(^|\/)cehub$/.test(path)) return location.origin+path+"/";
+  const dir=path.endsWith("/")?path:path.replace(/[^/]*$/,"");
+  return location.origin+(dir||"/");
+}
 function renderAcct(){
   const a=$("#acct"); if(!sb){ a.replaceChildren(); return; }
   if(S.uid) a.replaceChildren(el("span",{class:"who",title:S.email,text:S.email}), el("button",{class:"btn small",type:"button",onclick:async()=>{ await sb.auth.signOut(); toast("Signed out"); }},"Sign out"));
@@ -1304,7 +1314,7 @@ function openSignIn(){
   const msg=el("p",{class:"note",text:"We'll email you a one-time sign-in link — no password. Your licenses, transcript and favorites are then saved privately to your account."});
   const go=el("button",{class:"btn primary",type:"submit"},"Email me a sign-in link");
   const form=el("form",{class:"signin",onsubmit:async ev=>{ ev.preventDefault(); const v=email.value.trim(); if(!/^\S+@\S+\.\S+$/.test(v)){ toast("Enter a valid email address"); return; } go.disabled=true;
-      const {error}=await sb.auth.signInWithOtp({email:v, options:{emailRedirectTo: location.origin+location.pathname}});
+      const {error}=await sb.auth.signInWithOtp({email:v, options:{emailRedirectTo: authReturnUrl()}});
       go.disabled=false; if(error){ msg.textContent="Couldn't send the link: "+error.message; return; }
       form.replaceChildren(el("h2",{text:"Check your email"}), el("p",{text:"We sent a sign-in link to "+v+". Open it on this device to finish signing in. It can take a minute to arrive — check spam if it doesn't."}), el("div",{class:"actions"}, el("button",{class:"btn",type:"button",onclick:()=>$("#dlg").close()},"Close"))); }},
     el("h2",{text:"Sign in to CE Hub"}), msg, el("label",{class:"field"},"Email",email), el("div",{class:"actions"}, go, el("button",{class:"btn ghost",type:"button",onclick:()=>$("#dlg").close()},"Cancel")));
@@ -1313,7 +1323,8 @@ function openSignIn(){
 async function initAuth(){
   loadLocal();
   if(!configured()) return;
-  try{ sb=window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey); }catch(e){ console.warn(e); sb=null; return; }
+  // Default flow is implicit: the link returns here with #access_token (detectSessionInUrl reads it on load and clears the hash). ?code= is only exchanged if a PKCE sign-in stored a verifier. Sign-out stays on this page; it has no redirect.
+  try{ sb=window.supabase.createClient(CFG.supabaseUrl, CFG.supabaseAnonKey, {auth:{detectSessionInUrl:true, flowType:"implicit"}}); }catch(e){ console.warn(e); sb=null; return; }
   renderAcct();
   const {data}=await sb.auth.getSession(); await applySession(data?.session||null);
   sb.auth.onAuthStateChange((_evt, session)=>{ setTimeout(()=>applySession(session),0); });

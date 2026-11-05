@@ -76,6 +76,24 @@ nav.tabs button:hover{color:var(--ink)}
 .btn:hover{border-color:var(--ink)}
 .btn.primary{font:700 11px/1.2 var(--f-body);letter-spacing:.14em;text-transform:uppercase;padding:9px 16px}
 .btn.primary:hover{background:#9A4527;border-color:#9A4527}
+/* Dark primary buttons. The `a { color: var(--accent) }` rule outranks
+   .btn.primary, so link labels (Register, Visit / apply) were #E89A74 on
+   an #E89A74 fill. Navy #1E2A3A on that fill is 6.43:1. The deeper hover
+   fill #9A4527 cannot keep navy text (2.25:1); white on it is 6.45:1.
+   Covers default, :link, :visited, :focus, :focus-visible, :hover, :active. */
+@media (prefers-color-scheme: dark){
+ :root:not([data-theme="light"]) :is(a.btn.primary,.btn.primary),
+ :root:not([data-theme="light"]) :is(a.btn.primary,.btn.primary):is(:link,:visited,:focus,:focus-visible){color:#1E2A3A;background:#E89A74;border-color:#E89A74}
+ :root:not([data-theme="light"]) :is(a.btn.primary,.btn.primary):is(:hover,:active){color:#FFFFFF;background:#9A4527;border-color:#9A4527}
+}
+:root[data-theme="dark"] :is(a.btn.primary,.btn.primary),
+:root[data-theme="dark"] :is(a.btn.primary,.btn.primary):is(:link,:visited,:focus,:focus-visible){color:#1E2A3A;background:#E89A74;border-color:#E89A74}
+:root[data-theme="dark"] :is(a.btn.primary,.btn.primary):is(:hover,:active){color:#FFFFFF;background:#9A4527;border-color:#9A4527}
+/* Pressed favorites were light text on a muddy sand mix (4.19:1). Navy on the sand token is 9.06:1. */
+@media (prefers-color-scheme: dark){
+ :root:not([data-theme="light"]) .btn[aria-pressed="true"]{color:#1E2A3A;background:#E8C892}
+}
+:root[data-theme="dark"] .btn[aria-pressed="true"]{color:#1E2A3A;background:#E8C892}
 .btn.small{padding:5px 11px;font-size:11.5px}
 .btn.small.primary{padding:7px 13px;font-size:10.5px}
 .btn[aria-pressed="true"]{border-color:var(--c-ophthalmology);color:var(--ink);background:color-mix(in srgb,var(--fluor) 45%,var(--surface))}

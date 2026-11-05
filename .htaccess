@@ -1,0 +1,8 @@
+# HTML must revalidate so a new ?v= on CSS and JS is picked up.
+# Apache on Deploy Now honors .htaccess. IfModule keeps a missing
+# headers module from turning the site into a 500.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>

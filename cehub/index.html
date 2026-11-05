@@ -319,6 +319,7 @@ dialog::backdrop{background:rgba(8,14,20,.5)}
 <script>
 (function(){
 "use strict";
+const ASSET_V="";
 const YEAR = 2027;
 const CATS = {
   national:{label:"National", c:"--c-national"}, state:{label:"State association", c:"--c-state"},
@@ -914,7 +915,7 @@ function licCard(lic,idx){
 }
 
 /* ---------- transcript ---------- */
-const PDFJS_URL="vendor/pdf.min.js", PDFJS_WORKER="vendor/pdf.worker.min.js";
+const PDFJS_URL="vendor/pdf.min.js"+ASSET_V, PDFJS_WORKER="vendor/pdf.worker.min.js"+ASSET_V;
 let pdfjsP=null;
 function loadPdfjs(){
   if(window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
@@ -1321,10 +1322,10 @@ async function boot(){
   buildFilters();
   setView("list");
   try{
-    const [ev,req,meta]=await Promise.all(["events","requirements","meta"].map(n=>fetch("data/"+n+".json",{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(n+" "+r.status); return r.json(); })));
+    const [ev,req,meta]=await Promise.all(["events","requirements","meta"].map(n=>fetch("data/"+n+".json"+ASSET_V,{cache:"no-cache"}).then(r=>{ if(!r.ok) throw new Error(n+" "+r.status); return r.json(); })));
     S.events=Array.isArray(ev)? ev : []; S.req=req; S.meta=meta; S.loaded=true; S.dbOk=true;
-    fetch("data/requirements-md.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(j=>{ S.reqMd=j; renderAll(); }).catch(()=>{});
-    fetch("data/missions.json",{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(ms=>{ S.missions=Array.isArray(ms)?ms:[]; renderAll(); }).catch(()=>{});
+    fetch("data/requirements-md.json"+ASSET_V,{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(j=>{ S.reqMd=j; renderAll(); }).catch(()=>{});
+    fetch("data/missions.json"+ASSET_V,{cache:"no-cache"}).then(r=>r.ok?r.json():[]).then(ms=>{ S.missions=Array.isArray(ms)?ms:[]; renderAll(); }).catch(()=>{});
   }catch(e){ console.warn(e); S.dbOk=false; }
   renderAll();
   await initAuth();

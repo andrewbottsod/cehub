@@ -1,0 +1,4 @@
+Public-domain US Census Bureau data, built by scripts/build-zcta.py.
+Centroids: 2024 Gazetteer national ZCTA file (GEOID, INTPTLAT, INTPTLONG).
+Place names: 2020 ZCTA-to-place relationship, largest incorporated place in each ZCTA (else the largest place). Census place suffixes such as "city" and "town" are removed.
+Each NNN.json holds ZCTAs whose code starts with those three digits: [lat, lon] or [lat, lon, place, state].
